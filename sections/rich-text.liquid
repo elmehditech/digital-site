@@ -1,0 +1,18 @@
+<section class="section">
+  <div class="container container--narrow">
+    {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+    <div class="rte">{{ section.settings.text }}</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Texte",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "À propos" },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Présentez votre agence ici.</p>" }
+  ],
+  "presets": [{ "name": "Texte" }]
+}
+{% endschema %}

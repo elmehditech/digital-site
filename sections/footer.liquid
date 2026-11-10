@@ -1,0 +1,58 @@
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <p class="site-footer__name">{{ shop.name }}</p>
+      {%- if section.settings.text != blank -%}
+        <p class="muted">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.menu.links.size > 0 -%}
+      <nav aria-label="{{ section.settings.menu_title | escape }}">
+        <p class="site-footer__title">{{ section.settings.menu_title | escape }}</p>
+        <ul class="site-footer__list">
+          {%- for link in section.settings.menu.links -%}
+            <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
+    <div>
+      <p class="site-footer__title">{{ section.settings.contact_title | escape }}</p>
+      <ul class="site-footer__list">
+        {%- if settings.phone != blank -%}
+          <li><a href="tel:{{ settings.phone | remove: ' ' }}">{{ settings.phone | escape }}</a></li>
+        {%- endif -%}
+        {%- if settings.email != blank -%}
+          <li><a href="mailto:{{ settings.email | escape }}">{{ settings.email | escape }}</a></li>
+        {%- endif -%}
+        {%- if settings.address != blank -%}<li>{{ settings.address | escape }}</li>{%- endif -%}
+        {%- if settings.social_instagram != blank -%}
+          <li><a href="{{ settings.social_instagram | escape }}" target="_blank" rel="noopener">Instagram</a></li>
+        {%- endif -%}
+        {%- if settings.social_facebook != blank -%}
+          <li><a href="{{ settings.social_facebook | escape }}" target="_blank" rel="noopener">Facebook</a></li>
+        {%- endif -%}
+        {%- if settings.social_tiktok != blank -%}
+          <li><a href="{{ settings.social_tiktok | escape }}" target="_blank" rel="noopener">TikTok</a></li>
+        {%- endif -%}
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p class="muted">© {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'general.rights' | t }}</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page",
+  "settings": [
+    { "type": "textarea", "id": "text", "label": "Présentation", "default": "Agence de création de sites web : landing pages, sites vitrines, boutiques Shopify et développement sur mesure." },
+    { "type": "text", "id": "menu_title", "label": "Titre du menu", "default": "Navigation" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" },
+    { "type": "text", "id": "contact_title", "label": "Titre contact", "default": "Contact" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+<section class="section">
+  <div class="container">
+    <div class="cta reveal">
+      <h2 class="h2">{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.text != blank -%}<p class="lead">{{ section.settings.text | escape }}</p>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a class="button button--primary" href="{{ section.settings.button_url | default: '#devis' }}">
+          {{ section.settings.button_label | escape }}
+          {% render 'icon', name: 'arrow' %}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Appel à l'action",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Un projet en tête ?" },
+    { "type": "textarea", "id": "text", "label": "Texte", "default": "Expliquez-nous votre idée, nous préparons votre devis." },
+    { "type": "text", "id": "button_label", "label": "Texte du bouton", "default": "Demander un devis" },
+    { "type": "url", "id": "button_url", "label": "Lien du bouton" }
+  ],
+  "presets": [{ "name": "Appel à l'action" }]
+}
+{% endschema %}

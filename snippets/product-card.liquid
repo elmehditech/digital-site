@@ -1,0 +1,11 @@
+{%- comment -%} Usage: {% render 'product-card', product: product %} {%- endcomment -%}
+<article class="card product-card reveal">
+  {%- if product.featured_image != blank -%}
+    <a href="{{ product.url }}" class="product-card__media">
+      {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 900px) 33vw, 100vw', widths: '350, 700' }}
+    </a>
+  {%- endif -%}
+  <h2 class="h3"><a href="{{ product.url }}">{{ product.title | escape }}</a></h2>
+  <p class="product-card__price">{{ product.price | money }}</p>
+  <a class="button button--ghost button--full" href="{{ product.url }}">{{ 'collection.view' | t }}</a>
+</article>

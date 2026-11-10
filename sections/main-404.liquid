@@ -1,0 +1,12 @@
+<section class="section page-top center">
+  <div class="container container--narrow">
+    <p class="eyebrow">404</p>
+    <h1 class="h1 h1--page">{{ 'not_found.title' | t }}</h1>
+    <p class="lead">{{ 'not_found.text' | t }}</p>
+    <a class="button button--primary" href="{{ routes.root_url }}">{{ 'general.back_home' | t }}</a>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Page 404", "tag": "div" }
+{% endschema %}

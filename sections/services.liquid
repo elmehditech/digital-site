@@ -1,0 +1,48 @@
+<section class="section" id="{{ section.settings.anchor | default: 'services' | handleize }}">
+  <div class="container">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <article class="card reveal" {{ block.shopify_attributes }}>
+          <span class="card__num">{{ forloop.index | prepend: '0' }}</span>
+          <h3 class="h3">{{ block.settings.title | escape }}</h3>
+          <p class="muted">{{ block.settings.text | escape }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Services",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancre (lien #)", "default": "services" },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Nos services" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Tout ce qu'il faut pour être en ligne" },
+    { "type": "textarea", "id": "text", "label": "Texte" },
+    {
+      "type": "select", "id": "columns", "label": "Colonnes", "default": "4",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Service" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Décrivez ce service en une ou deux phrases." }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Services", "blocks": [{ "type": "service" }, { "type": "service" }, { "type": "service" }] }
+  ]
+}
+{% endschema %}

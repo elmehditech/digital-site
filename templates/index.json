@@ -1,0 +1,265 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "699 DH",
+            "label": "À partir de"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "4 formules",
+            "label": "Pour chaque besoin"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "Gratuit",
+            "label": "Devis sur mesure"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "eyebrow": "Agence de création de sites web",
+        "heading": "Un site professionnel qui",
+        "heading_accent": "fait grandir votre activité.",
+        "text": "Landing page, site vitrine, boutique Shopify ou développement sur mesure : nous concevons le site qu'il vous faut, à un prix clair.",
+        "button_label": "Voir nos formules",
+        "button_url": "#formules",
+        "button2_label": "Demander un devis",
+        "button2_url": "#devis"
+      }
+    },
+    "services": {
+      "type": "services",
+      "blocks": {
+        "a": {
+          "type": "service",
+          "settings": {
+            "title": "Landing page",
+            "text": "Une page unique, pensée pour présenter une offre et transformer vos visiteurs en clients."
+          }
+        },
+        "b": {
+          "type": "service",
+          "settings": {
+            "title": "Site vitrine",
+            "text": "Présentez votre activité, vos services et vos coordonnées. Idéal pour médecins, dentistes, cabinets et commerces."
+          }
+        },
+        "c": {
+          "type": "service",
+          "settings": {
+            "title": "Boutique Shopify",
+            "text": "Une boutique en ligne complète pour vendre vos produits et encaisser vos commandes."
+          }
+        },
+        "d": {
+          "type": "service",
+          "settings": {
+            "title": "Développement sur mesure",
+            "text": "Un besoin spécifique ? Nous étudions votre projet et développons la solution adaptée."
+          }
+        }
+      },
+      "block_order": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "settings": {
+        "anchor": "services",
+        "eyebrow": "Nos services",
+        "heading": "Tout ce qu'il faut pour être en ligne",
+        "text": "",
+        "columns": "4"
+      }
+    },
+    "packs": {
+      "type": "packs",
+      "blocks": {
+        "p1": {
+          "type": "pack",
+          "settings": {
+            "title": "Landing Page",
+            "subtitle": "Une page professionnelle pour présenter votre offre",
+            "price_prefix": "",
+            "price": "699 DH",
+            "features": "Une page au design professionnel\nAdaptée mobile, tablette et ordinateur\nBouton d'appel et WhatsApp\nFormulaire de contact",
+            "badge": "",
+            "highlight": false,
+            "button_label": "Choisir cette formule",
+            "button_url": "#devis"
+          }
+        },
+        "p2": {
+          "type": "pack",
+          "settings": {
+            "title": "Site Vitrine",
+            "subtitle": "Pour médecins, dentistes, cabinets et professionnels",
+            "price_prefix": "",
+            "price": "1 699 DH",
+            "features": "Site de présentation de votre activité\nPages services, à propos et contact\nCoordonnées, horaires et localisation\nAdapté mobile, tablette et ordinateur",
+            "badge": "",
+            "highlight": false,
+            "button_label": "Choisir cette formule",
+            "button_url": "#devis"
+          }
+        },
+        "p3": {
+          "type": "pack",
+          "settings": {
+            "title": "Boutique Shopify",
+            "subtitle": "Votre boutique en ligne prête à vendre",
+            "price_prefix": "",
+            "price": "2 499 DH",
+            "features": "Création de votre boutique Shopify\nDesign personnalisé à votre marque\nMise en place des produits\nConfiguration du paiement et de la livraison",
+            "badge": "E-commerce",
+            "highlight": true,
+            "button_label": "Choisir cette formule",
+            "button_url": "#devis"
+          }
+        },
+        "p4": {
+          "type": "pack",
+          "settings": {
+            "title": "Développement sur mesure",
+            "subtitle": "Un projet web spécifique, étudié avec vous",
+            "price_prefix": "",
+            "price": "Sur devis",
+            "features": "Échange sur votre besoin\nAnalyse et proposition technique\nDevis détaillé et personnalisé\nDéveloppement adapté à votre projet",
+            "badge": "",
+            "highlight": false,
+            "button_label": "Demander un devis",
+            "button_url": "#devis"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "anchor": "formules",
+        "eyebrow": "Nos formules",
+        "heading": "Des prix clairs, sans surprise",
+        "text": "Choisissez la formule qui correspond à votre projet. Pour un besoin particulier, nous préparons un devis.",
+        "note": ""
+      }
+    },
+    "process": {
+      "type": "process",
+      "blocks": {
+        "e1": {
+          "type": "step",
+          "settings": {
+            "title": "Échange",
+            "text": "Vous nous expliquez votre activité et vos objectifs."
+          }
+        },
+        "e2": {
+          "type": "step",
+          "settings": {
+            "title": "Proposition",
+            "text": "Nous vous conseillons la formule adaptée ou préparons votre devis."
+          }
+        },
+        "e3": {
+          "type": "step",
+          "settings": {
+            "title": "Création",
+            "text": "Nous concevons votre site et vous le présentons pour validation."
+          }
+        },
+        "e4": {
+          "type": "step",
+          "settings": {
+            "title": "Mise en ligne",
+            "text": "Votre site est publié et prêt à accueillir vos clients."
+          }
+        }
+      },
+      "block_order": [
+        "e1",
+        "e2",
+        "e3",
+        "e4"
+      ],
+      "settings": {
+        "anchor": "methode",
+        "eyebrow": "Notre méthode",
+        "heading": "Comment ça se passe",
+        "text": ""
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Quelle formule choisir ?",
+            "answer": "<p>La landing page convient pour présenter une seule offre. Le site vitrine présente toute votre activité (cabinet, commerce, service). La boutique Shopify est faite pour vendre en ligne. Pour tout autre besoin, demandez un devis sur mesure.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Comment obtenir un devis pour un projet sur mesure ?",
+            "answer": "<p>Remplissez le formulaire en bas de page en décrivant votre projet. Nous en discutons avec vous, puis nous vous envoyons un devis détaillé.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Je ne sais pas ce dont j'ai besoin, que faire ?",
+            "answer": "<p>Contactez-nous : nous vous posons quelques questions sur votre activité et vous orientons vers la solution la plus adaptée.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ],
+      "settings": {
+        "anchor": "faq",
+        "eyebrow": "FAQ",
+        "heading": "Questions fréquentes",
+        "text": ""
+      }
+    },
+    "devis": {
+      "type": "contact-form",
+      "settings": {
+        "anchor": "devis",
+        "eyebrow": "Devis gratuit",
+        "heading": "Parlons de votre projet",
+        "text": "Décrivez-nous votre besoin : nous vous répondons avec une proposition claire et un devis adapté.",
+        "plans": "Landing page professionnelle – 699 DH\nSite vitrine – 1 699 DH\nBoutique Shopify – 2 499 DH\nDéveloppement sur mesure – sur devis\nJe ne sais pas encore"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "services",
+    "packs",
+    "process",
+    "faq",
+    "devis"
+  ]
+}

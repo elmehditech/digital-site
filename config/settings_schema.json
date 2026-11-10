@@ -1,0 +1,54 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Mezalux Agency",
+    "theme_version": "1.0.0",
+    "theme_author": "Mezalux Agency",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/manual/online-store/themes"
+  },
+  {
+    "name": "Couleurs",
+    "settings": [
+      { "type": "color", "id": "color_bg", "label": "Fond", "default": "#0b0b0c" },
+      { "type": "color", "id": "color_surface", "label": "Fond des cartes", "default": "#151517" },
+      { "type": "color", "id": "color_border", "label": "Bordures", "default": "#2a2a2e" },
+      { "type": "color", "id": "color_text", "label": "Texte", "default": "#f4f1ea" },
+      { "type": "color", "id": "color_muted", "label": "Texte secondaire", "default": "#a8a39a" },
+      { "type": "color", "id": "color_accent", "label": "Accent (boutons, détails)", "default": "#c9a24b" },
+      { "type": "color", "id": "color_accent_text", "label": "Texte sur accent", "default": "#0b0b0c" }
+    ]
+  },
+  {
+    "name": "Typographie",
+    "settings": [
+      { "type": "font_picker", "id": "font_heading", "label": "Titres", "default": "playfair_display_n7" },
+      { "type": "font_picker", "id": "font_body", "label": "Texte", "default": "dm_sans_n4" }
+    ]
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo" },
+      { "type": "range", "id": "logo_width", "label": "Largeur du logo", "min": 50, "max": 250, "step": 10, "unit": "px", "default": 130 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  },
+  {
+    "name": "Contact",
+    "settings": [
+      { "type": "text", "id": "whatsapp", "label": "Numéro WhatsApp", "info": "Format international, ex. +212600000000. Laissez vide pour masquer le bouton." },
+      { "type": "text", "id": "phone", "label": "Téléphone" },
+      { "type": "text", "id": "email", "label": "E-mail" },
+      { "type": "text", "id": "address", "label": "Ville / adresse" }
+    ]
+  },
+  {
+    "name": "Réseaux sociaux",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Lien Instagram" },
+      { "type": "text", "id": "social_facebook", "label": "Lien Facebook" },
+      { "type": "text", "id": "social_tiktok", "label": "Lien TikTok" }
+    ]
+  }
+]

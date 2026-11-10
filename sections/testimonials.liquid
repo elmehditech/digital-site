@@ -1,0 +1,41 @@
+<section class="section section--alt" id="{{ section.settings.anchor | default: 'avis' | handleize }}">
+  <div class="container">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="grid grid--3">
+      {%- for block in section.blocks -%}
+        <figure class="card quote reveal" {{ block.shopify_attributes }}>
+          <blockquote>« {{ block.settings.quote | escape }} »</blockquote>
+          <figcaption>
+            <strong>{{ block.settings.author | escape }}</strong>
+            {%- if block.settings.role != blank -%}<span class="muted">{{ block.settings.role | escape }}</span>{%- endif -%}
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Avis clients",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancre (lien #)", "default": "avis" },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Avis clients" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Ils nous ont fait confiance" },
+    { "type": "textarea", "id": "text", "label": "Texte" }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Avis",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Avis", "default": "Collez ici l'avis de votre client." },
+        { "type": "text", "id": "author", "label": "Nom", "default": "Nom du client" },
+        { "type": "text", "id": "role", "label": "Activité" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Avis clients", "blocks": [{ "type": "quote" }, { "type": "quote" }, { "type": "quote" }] }]
+}
+{% endschema %}

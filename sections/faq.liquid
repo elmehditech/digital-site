@@ -1,0 +1,40 @@
+<section class="section" id="{{ section.settings.anchor | default: 'faq' | handleize }}">
+  <div class="container container--narrow">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="faq">
+      {%- for block in section.blocks -%}
+        <details class="faq__item reveal" {{ block.shopify_attributes }}>
+          <summary>
+            <span>{{ block.settings.question | escape }}</span>
+            {% render 'icon', name: 'plus' %}
+          </summary>
+          <div class="rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Questions fréquentes",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancre (lien #)", "default": "faq" },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "FAQ" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Questions fréquentes" },
+    { "type": "textarea", "id": "text", "label": "Texte" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Votre question ?" },
+        { "type": "richtext", "id": "answer", "label": "Réponse", "default": "<p>Votre réponse.</p>" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Questions fréquentes", "blocks": [{ "type": "question" }, { "type": "question" }] }]
+}
+{% endschema %}

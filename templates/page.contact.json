@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": { "type": "main-page" },
+    "devis": {
+      "type": "contact-form",
+      "settings": {
+        "eyebrow": "Devis gratuit",
+        "heading": "Parlons de votre projet",
+        "text": "Décrivez-nous votre besoin : nous vous répondons avec une proposition claire et un devis adapté."
+      }
+    }
+  },
+  "order": ["main", "devis"]
+}

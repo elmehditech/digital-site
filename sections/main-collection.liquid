@@ -1,0 +1,24 @@
+<section class="section page-top">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="h1 h1--page">{{ collection.title | escape }}</h1>
+      {%- if collection.description != blank -%}<div class="rte lead">{{ collection.description }}</div>{%- endif -%}
+    </div>
+    {%- paginate collection.products by 12 -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="grid grid--3">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p class="muted center">{{ 'collection.empty' | t }}</p>
+      {%- endif -%}
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Collection", "tag": "div" }
+{% endschema %}

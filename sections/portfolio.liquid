@@ -1,0 +1,48 @@
+<section class="section" id="{{ section.settings.anchor | default: 'realisations' | handleize }}">
+  <div class="container">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="grid grid--3">
+      {%- for block in section.blocks -%}
+        <article class="work reveal" {{ block.shopify_attributes }}>
+          {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" target="_blank" rel="noopener" class="work__link">{%- endif -%}
+          <div class="work__media">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 900px) 33vw, 100vw', widths: '450, 900' }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+            {%- endif -%}
+          </div>
+          <h3 class="h3">{{ block.settings.title | escape }}</h3>
+          {%- if block.settings.category != blank -%}<p class="muted">{{ block.settings.category | escape }}</p>{%- endif -%}
+          {%- if block.settings.link != blank -%}</a>{%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Réalisations",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancre (lien #)", "default": "realisations" },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Réalisations" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Quelques projets récents" },
+    { "type": "textarea", "id": "text", "label": "Texte" }
+  ],
+  "blocks": [
+    {
+      "type": "project",
+      "name": "Projet",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Nom du projet", "default": "Nom du projet" },
+        { "type": "text", "id": "category", "label": "Type de site" },
+        { "type": "url", "id": "link", "label": "Lien du site" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Réalisations", "blocks": [{ "type": "project" }, { "type": "project" }, { "type": "project" }] }]
+}
+{% endschema %}

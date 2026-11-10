@@ -1,0 +1,49 @@
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <a class="site-header__logo" href="{{ routes.root_url }}">
+      {%- if settings.logo != blank -%}
+        {{ settings.logo | image_url: width: 500 | image_tag: alt: shop.name, width: settings.logo_width, loading: 'eager' }}
+      {%- else -%}
+        <span class="site-header__name">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="site-nav" id="SiteNav" aria-label="{{ 'general.menu' | t }}">
+      <ul class="site-nav__list">
+        {%- for link in section.settings.menu.links -%}
+          <li>
+            <a href="{{ link.url }}" class="site-nav__link{% if link.current %} is-active{% endif %}">{{ link.title | escape }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if section.settings.button_label != blank -%}
+        <a class="button button--primary site-nav__cta" href="{{ section.settings.button_url | default: '/pages/contact' }}">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="site-header__cart" href="{{ routes.cart_url }}" aria-label="{{ 'general.cart' | t }}">
+        {% render 'icon', name: 'cart' %}
+        {%- if cart.item_count > 0 -%}<span class="site-header__count">{{ cart.item_count }}</span>{%- endif -%}
+      </a>
+      <button class="site-header__toggle" type="button" aria-controls="SiteNav" aria-expanded="false" data-nav-toggle>
+        <span class="visually-hidden">{{ 'general.menu' | t }}</span>
+        <span class="icon-open">{% render 'icon', name: 'menu' %}</span>
+        <span class="icon-close">{% render 'icon', name: 'close' %}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "En-tête",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "text", "id": "button_label", "label": "Texte du bouton", "default": "Demander un devis" },
+    { "type": "url", "id": "button_url", "label": "Lien du bouton" }
+  ]
+}
+{% endschema %}

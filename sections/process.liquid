@@ -1,0 +1,39 @@
+<section class="section" id="{{ section.settings.anchor | default: 'methode' | handleize }}">
+  <div class="container">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <ol class="steps">
+      {%- for block in section.blocks -%}
+        <li class="step reveal" {{ block.shopify_attributes }}>
+          <span class="step__num">{{ forloop.index }}</span>
+          <h3 class="h3">{{ block.settings.title | escape }}</h3>
+          <p class="muted">{{ block.settings.text | escape }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Étapes",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancre (lien #)", "default": "methode" },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Notre méthode" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Comment ça se passe" },
+    { "type": "textarea", "id": "text", "label": "Texte" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Étape",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Étape" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Décrivez cette étape." }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Étapes", "blocks": [{ "type": "step" }, { "type": "step" }, { "type": "step" }] }]
+}
+{% endschema %}

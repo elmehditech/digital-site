@@ -1,0 +1,42 @@
+<section class="section page-top">
+  <div class="container container--narrow">
+    <h1 class="h1 h1--page">{{ 'cart.title' | t }}</h1>
+    {%- if cart.item_count == 0 -%}
+      <p class="lead">{{ 'cart.empty' | t }}</p>
+      <a class="button button--primary" href="{{ routes.root_url }}#formules">{{ 'general.continue' | t }}</a>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post" class="cart">
+        <ul class="cart__items">
+          {%- for item in cart.items -%}
+            <li class="cart__item">
+              <div class="cart__details">
+                <a class="h3" href="{{ item.url }}">{{ item.product.title | escape }}</a>
+                {%- unless item.product.has_only_default_variant -%}
+                  <p class="muted">{{ item.variant.title | escape }}</p>
+                {%- endunless -%}
+                <a class="cart__remove muted" href="{{ item.url_to_remove }}">{{ 'cart.remove' | t }}</a>
+              </div>
+              <div class="field cart__qty">
+                <label for="Qty-{{ item.key }}" class="visually-hidden">{{ 'cart.quantity' | t }}</label>
+                <input id="Qty-{{ item.key }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" inputmode="numeric">
+              </div>
+              <p class="cart__price">{{ item.final_line_price | money }}</p>
+            </li>
+          {%- endfor -%}
+        </ul>
+        <div class="cart__footer">
+          <p class="cart__subtotal"><span class="muted">{{ 'cart.subtotal' | t }}</span> <strong>{{ cart.total_price | money }}</strong></p>
+          <p class="muted">{{ 'cart.note' | t }}</p>
+          <div class="cart__buttons">
+            <button type="submit" name="update" class="button button--ghost">{{ 'cart.update' | t }}</button>
+            <button type="submit" name="checkout" class="button button--primary">{{ 'cart.checkout' | t }}</button>
+          </div>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Panier", "tag": "div" }
+{% endschema %}
