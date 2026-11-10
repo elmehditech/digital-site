@@ -1,5 +1,5 @@
-<section class="section" id="{{ section.settings.anchor | default: 'faq' | handleize }}">
-  <div class="container container--narrow">
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+  <div class="container split-layout">
     {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
     <div class="faq">
       {%- for block in section.blocks -%}
@@ -17,24 +17,24 @@
 
 {% schema %}
 {
-  "name": "Questions fréquentes",
+  "name": "FAQ",
   "tag": "div",
   "settings": [
-    { "type": "text", "id": "anchor", "label": "Ancre (lien #)", "default": "faq" },
-    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "FAQ" },
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Questions fréquentes" },
-    { "type": "textarea", "id": "text", "label": "Texte" }
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "FAQ" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Common questions." },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "checkbox", "id": "alt_bg", "label": "Use secondary background", "default": true }
   ],
   "blocks": [
     {
       "type": "question",
       "name": "Question",
       "settings": [
-        { "type": "text", "id": "question", "label": "Question", "default": "Votre question ?" },
-        { "type": "richtext", "id": "answer", "label": "Réponse", "default": "<p>Votre réponse.</p>" }
+        { "type": "text", "id": "question", "label": "Question", "default": "Your question?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Your answer.</p>" }
       ]
     }
   ],
-  "presets": [{ "name": "Questions fréquentes", "blocks": [{ "type": "question" }, { "type": "question" }] }]
+  "presets": [{ "name": "FAQ", "blocks": [{ "type": "question" }, { "type": "question" }] }]
 }
 {% endschema %}

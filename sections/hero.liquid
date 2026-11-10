@@ -1,68 +1,81 @@
 <section class="hero">
-  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid-lines" aria-hidden="true"></div>
   <div class="container hero__inner">
-    {%- if section.settings.eyebrow != blank -%}
-      <p class="eyebrow reveal">{{ section.settings.eyebrow | escape }}</p>
-    {%- endif -%}
-    <h1 class="h1 reveal">
-      {{ section.settings.heading | escape }}
-      {%- if section.settings.heading_accent != blank %} <em>{{ section.settings.heading_accent | escape }}</em>{% endif -%}
-    </h1>
-    {%- if section.settings.text != blank -%}
-      <p class="lead hero__text reveal">{{ section.settings.text | escape }}</p>
-    {%- endif -%}
-    <div class="hero__buttons reveal">
-      {%- if section.settings.button_label != blank -%}
-        <a class="button button--primary" href="{{ section.settings.button_url | default: '#formules' }}">
-          {{ section.settings.button_label | escape }}
-          {% render 'icon', name: 'arrow' %}
-        </a>
+    <div class="hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow hero-in" style="--d: 0">{{ section.settings.eyebrow | escape }}</p>
       {%- endif -%}
-      {%- if section.settings.button2_label != blank -%}
-        <a class="button button--ghost" href="{{ section.settings.button2_url | default: '#devis' }}">
-          {{ section.settings.button2_label | escape }}
-        </a>
+      <h1 class="display hero-in" style="--d: 1">
+        {{ section.settings.heading | escape }}
+        {%- if section.settings.heading_accent != blank %} <span class="accent">{{ section.settings.heading_accent | escape }}</span>{% endif -%}
+      </h1>
+      {%- if section.settings.text != blank -%}
+        <p class="lead hero__text hero-in" style="--d: 2">{{ section.settings.text | escape }}</p>
       {%- endif -%}
+      <div class="hero__buttons hero-in" style="--d: 3">
+        {%- if section.settings.button_label != blank -%}
+          <a class="button button--primary" href="{{ section.settings.button_url | default: '/pages/contact' }}">
+            {{ section.settings.button_label | escape }} {% render 'icon', name: 'arrow' %}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button2_label != blank -%}
+          <a class="button button--ghost" href="{{ section.settings.button2_url | default: '/pages/portfolio' }}">
+            {{ section.settings.button2_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
     </div>
 
-    {%- if section.blocks.size > 0 -%}
-      <ul class="hero__stats reveal">
+    {%- if section.settings.show_visual -%}
+      <div class="hero__visual hero-in" style="--d: 2" aria-hidden="true">
+        <div class="orbit"></div>
+        <div class="orbit orbit--2"></div>
+        {%- if section.settings.image != blank -%}
+          <div class="mock mock--image">
+            {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', alt: '', sizes: '(min-width: 990px) 520px, 90vw', widths: '520, 800, 1200' }}
+          </div>
+        {%- else -%}
+          <div class="mock">
+            <div class="mock__bar"><i></i><i></i><i></i><span></span></div>
+            <div class="mock__body">
+              <div class="mock__nav"><b></b><span></span><span></span><span></span></div>
+              <div class="mock__headline"><b></b><b></b><em></em></div>
+              <div class="mock__cards"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        {%- endif -%}
         {%- for block in section.blocks -%}
-          <li {{ block.shopify_attributes }}>
-            <strong>{{ block.settings.value | escape }}</strong>
-            <span>{{ block.settings.label | escape }}</span>
-          </li>
+          <span class="chip chip--{{ forloop.index }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</span>
         {%- endfor -%}
-      </ul>
+      </div>
     {%- endif -%}
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Bannière principale",
+  "name": "Hero",
   "tag": "div",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Agence de création de sites web" },
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Un site professionnel qui" },
-    { "type": "text", "id": "heading_accent", "label": "Fin du titre (mise en valeur)", "default": "fait grandir votre activité." },
-    { "type": "textarea", "id": "text", "label": "Texte", "default": "Landing page, site vitrine, boutique Shopify ou développement sur mesure : nous concevons le site qu'il vous faut, à un prix clair." },
-    { "type": "text", "id": "button_label", "label": "Bouton principal", "default": "Voir nos formules" },
-    { "type": "url", "id": "button_url", "label": "Lien du bouton principal" },
-    { "type": "text", "id": "button2_label", "label": "Bouton secondaire", "default": "Demander un devis" },
-    { "type": "url", "id": "button2_url", "label": "Lien du bouton secondaire" }
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Web Development Agency" },
+    { "type": "text", "id": "heading", "label": "Headline", "default": "We Build Digital Experiences That" },
+    { "type": "text", "id": "heading_accent", "label": "Headline ending (accent color)", "default": "Grow Businesses." },
+    { "type": "textarea", "id": "text", "label": "Subtitle", "default": "We design and develop Shopify stores, e-commerce platforms and business websites that look premium, load fast and turn visitors into customers." },
+    { "type": "text", "id": "button_label", "label": "Primary button", "default": "Start Your Project" },
+    { "type": "url", "id": "button_url", "label": "Primary button link" },
+    { "type": "text", "id": "button2_label", "label": "Secondary button", "default": "Explore Our Work" },
+    { "type": "url", "id": "button2_url", "label": "Secondary button link" },
+    { "type": "checkbox", "id": "show_visual", "label": "Show animated visual", "default": true },
+    { "type": "image_picker", "id": "image", "label": "Image (replaces the animated mockup)" }
   ],
   "blocks": [
     {
-      "type": "stat",
-      "name": "Chiffre clé",
-      "settings": [
-        { "type": "text", "id": "value", "label": "Valeur", "default": "699 DH" },
-        { "type": "text", "id": "label", "label": "Libellé", "default": "À partir de" }
-      ]
+      "type": "chip",
+      "name": "Floating label",
+      "settings": [{ "type": "text", "id": "label", "label": "Label", "default": "Shopify" }]
     }
   ],
-  "max_blocks": 4,
-  "presets": [{ "name": "Bannière principale" }]
+  "max_blocks": 3,
+  "presets": [{ "name": "Hero", "blocks": [{ "type": "chip" }] }]
 }
 {% endschema %}

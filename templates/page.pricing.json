@@ -1,0 +1,128 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Pricing",
+        "heading": "Simple, transparent pricing.",
+        "text": "Three packages for the most common projects, and custom quotes for everything else.",
+        "show_content": false
+      }
+    },
+    "pricing": {
+      "type": "pricing",
+      "blocks": {
+        "b1": {
+          "type": "plan",
+          "settings": {
+            "title": "Starter Website",
+            "text": "A professional one-page website to present your offer.",
+            "price_prefix": "",
+            "price": "699 DH",
+            "features": "Professionally designed landing page\nMobile, tablet and desktop ready\nCall and WhatsApp buttons\nContact form",
+            "badge": "",
+            "featured": false,
+            "button_label": "Choose Starter",
+            "button_url": "/pages/contact?service=Landing"
+          }
+        },
+        "b2": {
+          "type": "plan",
+          "settings": {
+            "title": "Professional Website",
+            "text": "A complete business website for clinics, practices and companies.",
+            "price_prefix": "",
+            "price": "1 699 DH",
+            "features": "Multi-page business website\nServices, about and contact pages\nContact details, hours and location\nMobile, tablet and desktop ready",
+            "badge": "Recommended",
+            "featured": true,
+            "button_label": "Choose Professional",
+            "button_url": "/pages/contact?service=Business"
+          }
+        },
+        "b3": {
+          "type": "plan",
+          "settings": {
+            "title": "Premium E-commerce",
+            "text": "A Shopify store that is ready to sell your products.",
+            "price_prefix": "",
+            "price": "2 499 DH",
+            "features": "Shopify store setup\nCustom design for your brand\nProduct setup\nPayment and shipping configuration",
+            "badge": "",
+            "featured": false,
+            "button_label": "Choose Premium",
+            "button_url": "/pages/contact?service=Shopify"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "note": "Need custom web development?",
+        "note_link_label": "Request a quote",
+        "note_link_url": "/pages/contact",
+        "flush_top": true
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "b1": {
+          "type": "question",
+          "settings": {
+            "question": "Which package should I choose?",
+            "answer": "<p>Starter suits a single offer or campaign. Professional presents your whole business across several pages. Premium E-commerce is for selling products online with Shopify. If you are unsure, contact us and we will advise you.</p>"
+          }
+        },
+        "b2": {
+          "type": "question",
+          "settings": {
+            "question": "What if my project does not fit a package?",
+            "answer": "<p>Send us your requirements through the contact form. We will discuss the project with you and prepare a detailed custom quote.</p>"
+          }
+        },
+        "b3": {
+          "type": "question",
+          "settings": {
+            "question": "How do we get started?",
+            "answer": "<p>Fill in the contact form or message us on WhatsApp. We will ask a few questions about your business and confirm the scope before starting.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Common questions.",
+        "text": "",
+        "alt_bg": true
+      }
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "eyebrow": "Ready when you are",
+        "heading": "Have a project in mind?",
+        "text": "Tell us about your business and we will come back with a clear proposal.",
+        "button_label": "Start Your Project",
+        "button_url": "/pages/contact",
+        "show_whatsapp": true
+      }
+    }
+  },
+  "order": [
+    "header",
+    "pricing",
+    "faq",
+    "cta"
+  ]
+}

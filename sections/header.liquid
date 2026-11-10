@@ -10,11 +10,20 @@
 
     <nav class="site-nav" id="SiteNav" aria-label="{{ 'general.menu' | t }}">
       <ul class="site-nav__list">
-        {%- for link in section.settings.menu.links -%}
-          <li>
-            <a href="{{ link.url }}" class="site-nav__link{% if link.current %} is-active{% endif %}">{{ link.title | escape }}</a>
-          </li>
-        {%- endfor -%}
+        {%- if section.settings.menu.links.size > 0 -%}
+          {%- for link in section.settings.menu.links -%}
+            <li>
+              <a href="{{ link.url }}" class="site-nav__link"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+            </li>
+          {%- endfor -%}
+        {%- else -%}
+          {%- comment -%} Fallback navigation used until a menu is assigned in the theme editor. {%- endcomment -%}
+          <li><a class="site-nav__link" href="{{ routes.root_url }}pages/services">{{ 'general.services' | t }}</a></li>
+          <li><a class="site-nav__link" href="{{ routes.root_url }}pages/portfolio">{{ 'general.portfolio' | t }}</a></li>
+          <li><a class="site-nav__link" href="{{ routes.root_url }}pages/about">{{ 'general.about' | t }}</a></li>
+          <li><a class="site-nav__link" href="{{ routes.root_url }}pages/pricing">{{ 'general.pricing' | t }}</a></li>
+          <li><a class="site-nav__link" href="{{ routes.root_url }}pages/contact">{{ 'general.contact' | t }}</a></li>
+        {%- endif -%}
       </ul>
       {%- if section.settings.button_label != blank -%}
         <a class="button button--primary site-nav__cta" href="{{ section.settings.button_url | default: '/pages/contact' }}">
@@ -23,27 +32,21 @@
       {%- endif -%}
     </nav>
 
-    <div class="site-header__actions">
-      <a class="site-header__cart" href="{{ routes.cart_url }}" aria-label="{{ 'general.cart' | t }}">
-        {% render 'icon', name: 'cart' %}
-        {%- if cart.item_count > 0 -%}<span class="site-header__count">{{ cart.item_count }}</span>{%- endif -%}
-      </a>
-      <button class="site-header__toggle" type="button" aria-controls="SiteNav" aria-expanded="false" data-nav-toggle>
-        <span class="visually-hidden">{{ 'general.menu' | t }}</span>
-        <span class="icon-open">{% render 'icon', name: 'menu' %}</span>
-        <span class="icon-close">{% render 'icon', name: 'close' %}</span>
-      </button>
-    </div>
+    <button class="site-header__toggle" type="button" aria-controls="SiteNav" aria-expanded="false" data-nav-toggle>
+      <span class="visually-hidden">{{ 'general.menu' | t }}</span>
+      <span class="icon-open">{% render 'icon', name: 'menu' %}</span>
+      <span class="icon-close">{% render 'icon', name: 'close' %}</span>
+    </button>
   </div>
 </header>
 
 {% schema %}
 {
-  "name": "En-tête",
+  "name": "Header",
   "settings": [
-    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
-    { "type": "text", "id": "button_label", "label": "Texte du bouton", "default": "Demander un devis" },
-    { "type": "url", "id": "button_url", "label": "Lien du bouton" }
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu", "info": "If the menu is empty, links to Services, Portfolio, About, Pricing and Contact pages are shown." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Start Your Project" },
+    { "type": "url", "id": "button_url", "label": "Button link" }
   ]
 }
 {% endschema %}

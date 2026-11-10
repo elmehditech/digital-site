@@ -1,0 +1,153 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Services",
+        "heading": "Websites and stores built around your business.",
+        "text": "From a single landing page to a complete Shopify store, we cover the design, development and ongoing care of your website.",
+        "show_content": false
+      }
+    },
+    "details": {
+      "type": "service-details",
+      "blocks": {
+        "b1": {
+          "type": "service",
+          "settings": {
+            "title": "Shopify Store Development",
+            "text": "We set up, design and configure your Shopify store so you can start selling with confidence.",
+            "features": "Store setup and configuration\nCustom theme design\nProduct and collection setup\nPayment and shipping configuration",
+            "button_label": "Start Your Project",
+            "button_url": "/pages/contact"
+          }
+        },
+        "b2": {
+          "type": "service",
+          "settings": {
+            "title": "E-commerce Website Development",
+            "text": "An online store structured around your catalogue and your customers, with a clear path from product to checkout.",
+            "features": "Catalogue and product page structure\nCart and checkout flow\nMobile-first layouts\nSpeed-focused build",
+            "button_label": "Start Your Project",
+            "button_url": "/pages/contact"
+          }
+        },
+        "b3": {
+          "type": "service",
+          "settings": {
+            "title": "Business Website Design",
+            "text": "A presentation website for clinics, practices, studios and service businesses that need to be found and trusted online.",
+            "features": "Home, services, about and contact pages\nContact details, opening hours and location\nResponsive design\nBasic on-page SEO structure",
+            "button_label": "Start Your Project",
+            "button_url": "/pages/contact"
+          }
+        },
+        "b4": {
+          "type": "service",
+          "settings": {
+            "title": "Landing Page Development",
+            "text": "A single high-impact page built around one offer and one clear call to action.",
+            "features": "Conversion-focused layout\nClear call to action\nContact form and WhatsApp button\nMobile, tablet and desktop ready",
+            "button_label": "Start Your Project",
+            "button_url": "/pages/contact"
+          }
+        },
+        "b5": {
+          "type": "service",
+          "settings": {
+            "title": "Website Redesign",
+            "text": "We rethink the design and structure of your existing website while keeping what already works.",
+            "features": "Review of your current website\nNew visual design\nImproved navigation and structure\nResponsive rebuild",
+            "button_label": "Start Your Project",
+            "button_url": "/pages/contact"
+          }
+        },
+        "b6": {
+          "type": "service",
+          "settings": {
+            "title": "Website Maintenance & Optimization",
+            "text": "Ongoing care for your website so it stays fast, up to date and working as it should.",
+            "features": "Content and design updates\nBug fixes\nPerformance improvements\nOngoing support",
+            "button_label": "Start Your Project",
+            "button_url": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": ""
+      }
+    },
+    "process": {
+      "type": "process",
+      "blocks": {
+        "b1": {
+          "type": "step",
+          "settings": {
+            "title": "Discovery",
+            "text": "We learn about your business, your customers and your goals."
+          }
+        },
+        "b2": {
+          "type": "step",
+          "settings": {
+            "title": "Proposal",
+            "text": "You receive a clear scope, timeline and price before any work starts."
+          }
+        },
+        "b3": {
+          "type": "step",
+          "settings": {
+            "title": "Design & Build",
+            "text": "We design and develop your website and share progress for your feedback."
+          }
+        },
+        "b4": {
+          "type": "step",
+          "settings": {
+            "title": "Launch & Support",
+            "text": "We publish your website and stay available for updates."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "eyebrow": "Process",
+        "heading": "How we work.",
+        "text": "",
+        "alt_bg": true
+      }
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "eyebrow": "Ready when you are",
+        "heading": "Have a project in mind?",
+        "text": "Tell us about your business and we will come back with a clear proposal.",
+        "button_label": "Start Your Project",
+        "button_url": "/pages/contact",
+        "show_whatsapp": true
+      }
+    }
+  },
+  "order": [
+    "header",
+    "details",
+    "process",
+    "cta"
+  ]
+}

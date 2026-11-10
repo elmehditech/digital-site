@@ -2,150 +2,60 @@
   {
     "name": "theme_info",
     "theme_name": "Mezalux Agency",
-    "theme_version": "1.0.0",
+    "theme_version": "2.0.0",
     "theme_author": "Mezalux Agency",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://help.shopify.com/manual/online-store/themes"
   },
   {
-    "name": "Couleurs",
+    "name": "Colors",
     "settings": [
-      {
-        "type": "color",
-        "id": "color_bg",
-        "label": "Fond",
-        "default": "#060b1a"
-      },
-      {
-        "type": "color",
-        "id": "color_surface",
-        "label": "Fond des cartes",
-        "default": "#0d1630"
-      },
-      {
-        "type": "color",
-        "id": "color_border",
-        "label": "Bordures",
-        "default": "#1f2d52"
-      },
-      {
-        "type": "color",
-        "id": "color_text",
-        "label": "Texte",
-        "default": "#eef3ff"
-      },
-      {
-        "type": "color",
-        "id": "color_muted",
-        "label": "Texte secondaire",
-        "default": "#9dabca"
-      },
-      {
-        "type": "color",
-        "id": "color_accent",
-        "label": "Couleur principale (boutons, bordures)",
-        "default": "#2563eb"
-      },
-      {
-        "type": "color",
-        "id": "color_accent_text",
-        "label": "Texte sur la couleur principale",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "color_highlight",
-        "label": "Couleur secondaire (titres, prix, détails)",
-        "default": "#22d3ee"
-      }
+      { "type": "color", "id": "color_bg", "label": "Background", "default": "#0B0B0B" },
+      { "type": "color", "id": "color_surface", "label": "Secondary background", "default": "#141414" },
+      { "type": "color", "id": "color_border", "label": "Lines and borders", "default": "#2A2A2A" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_muted", "label": "Secondary text", "default": "#A6A6A6" },
+      { "type": "color", "id": "color_accent", "label": "Accent", "default": "#B89A68" },
+      { "type": "color", "id": "color_accent_text", "label": "Text on accent", "default": "#0B0B0B" }
     ]
   },
   {
-    "name": "Typographie",
+    "name": "Typography",
     "settings": [
-      {
-        "type": "font_picker",
-        "id": "font_heading",
-        "label": "Titres",
-        "default": "playfair_display_n7"
-      },
-      {
-        "type": "font_picker",
-        "id": "font_body",
-        "label": "Texte",
-        "default": "dm_sans_n4"
-      }
+      { "type": "font_picker", "id": "font_heading", "label": "Headings", "default": "dm_sans_n5" },
+      { "type": "font_picker", "id": "font_body", "label": "Body", "default": "dm_sans_n4" }
     ]
   },
   {
     "name": "Logo",
     "settings": [
-      {
-        "type": "image_picker",
-        "id": "logo",
-        "label": "Logo"
-      },
-      {
-        "type": "range",
-        "id": "logo_width",
-        "label": "Largeur du logo",
-        "min": 50,
-        "max": 250,
-        "step": 10,
-        "unit": "px",
-        "default": 130
-      },
-      {
-        "type": "image_picker",
-        "id": "favicon",
-        "label": "Favicon"
-      }
+      { "type": "image_picker", "id": "logo", "label": "Logo" },
+      { "type": "range", "id": "logo_width", "label": "Logo width", "min": 50, "max": 250, "step": 10, "unit": "px", "default": 130 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
     ]
   },
   {
-    "name": "Contact",
+    "name": "Animations",
     "settings": [
-      {
-        "type": "text",
-        "id": "whatsapp",
-        "label": "Numéro WhatsApp",
-        "info": "Format international, ex. +212600000000. Laissez vide pour masquer le bouton."
-      },
-      {
-        "type": "text",
-        "id": "phone",
-        "label": "Téléphone"
-      },
-      {
-        "type": "text",
-        "id": "email",
-        "label": "E-mail"
-      },
-      {
-        "type": "text",
-        "id": "address",
-        "label": "Ville / adresse"
-      }
+      { "type": "checkbox", "id": "animations", "label": "Reveal content on scroll", "default": true }
     ]
   },
   {
-    "name": "Réseaux sociaux",
+    "name": "Contact details",
     "settings": [
-      {
-        "type": "text",
-        "id": "social_instagram",
-        "label": "Lien Instagram"
-      },
-      {
-        "type": "text",
-        "id": "social_facebook",
-        "label": "Lien Facebook"
-      },
-      {
-        "type": "text",
-        "id": "social_tiktok",
-        "label": "Lien TikTok"
-      }
+      { "type": "text", "id": "whatsapp", "label": "WhatsApp number", "info": "International format, e.g. +212600000000. WhatsApp buttons stay hidden while this is empty." },
+      { "type": "text", "id": "phone", "label": "Phone" },
+      { "type": "text", "id": "email", "label": "Email" },
+      { "type": "text", "id": "address", "label": "City / address" }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram link" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook link" },
+      { "type": "text", "id": "social_linkedin", "label": "LinkedIn link" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok link" }
     ]
   }
 ]

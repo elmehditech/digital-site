@@ -1,0 +1,46 @@
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+  <div class="container{% if section.settings.layout == 'split' %} split-layout{% endif %}">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="features features--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <article class="feature reveal" {{ block.shopify_attributes }}>
+          <span class="feature__num">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+          <h3 class="h3">{{ block.settings.title | escape }}</h3>
+          <p class="muted">{{ block.settings.text | escape }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Feature columns",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why choose us" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A partner, not just a supplier." },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    {
+      "type": "select", "id": "layout", "label": "Layout", "default": "split",
+      "options": [{ "value": "split", "label": "Heading left, items right" }, { "value": "stacked", "label": "Heading above items" }]
+    },
+    {
+      "type": "select", "id": "columns", "label": "Columns", "default": "2",
+      "options": [{ "value": "2", "label": "2" }, { "value": "3", "label": "3" }]
+    },
+    { "type": "checkbox", "id": "alt_bg", "label": "Use secondary background", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Item",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Describe this point in one or two sentences." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Feature columns", "blocks": [{ "type": "feature" }, { "type": "feature" }, { "type": "feature" }, { "type": "feature" }] }]
+}
+{% endschema %}

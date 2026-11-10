@@ -1,0 +1,183 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "About us",
+        "heading": "We help businesses look their best online.",
+        "text": "",
+        "show_content": false
+      }
+    },
+    "intro": {
+      "type": "split",
+      "settings": {
+        "eyebrow": "Who we are",
+        "heading": "A web development agency focused on results.",
+        "text": "<p>We are a web development agency that designs and builds Shopify stores, e-commerce platforms and business websites.</p><p>Our work combines clean design, solid development and a clear focus on what your customers need to see to take action.</p>",
+        "button_label": "Start Your Project",
+        "button_url": "/pages/contact",
+        "image_first": false,
+        "alt_bg": false
+      }
+    },
+    "mission": {
+      "type": "features",
+      "blocks": {
+        "b1": {
+          "type": "feature",
+          "settings": {
+            "title": "Our mission",
+            "text": "Give every business, whatever its size, a professional online presence that it is proud to share."
+          }
+        },
+        "b2": {
+          "type": "feature",
+          "settings": {
+            "title": "Our vision",
+            "text": "Become the trusted digital partner for businesses that want to grow online."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ],
+      "settings": {
+        "eyebrow": "Mission & vision",
+        "heading": "What drives us.",
+        "text": "",
+        "layout": "split",
+        "columns": "2",
+        "alt_bg": true
+      }
+    },
+    "expertise": {
+      "type": "features",
+      "blocks": {
+        "b1": {
+          "type": "feature",
+          "settings": {
+            "title": "Shopify & Liquid",
+            "text": "Store setup, theme customization and custom sections built on Online Store 2.0."
+          }
+        },
+        "b2": {
+          "type": "feature",
+          "settings": {
+            "title": "UX / UI design",
+            "text": "Interfaces that are clear, consistent and easy to use on any screen."
+          }
+        },
+        "b3": {
+          "type": "feature",
+          "settings": {
+            "title": "E-commerce",
+            "text": "Product pages, navigation and checkout flows that make buying simple."
+          }
+        },
+        "b4": {
+          "type": "feature",
+          "settings": {
+            "title": "Responsive development",
+            "text": "Layouts that adapt to phones, tablets and desktops."
+          }
+        },
+        "b5": {
+          "type": "feature",
+          "settings": {
+            "title": "Performance",
+            "text": "Lightweight pages and optimized images for faster loading."
+          }
+        },
+        "b6": {
+          "type": "feature",
+          "settings": {
+            "title": "SEO foundations",
+            "text": "Clean structure, headings and metadata that search engines can read."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ],
+      "settings": {
+        "eyebrow": "Expertise",
+        "heading": "What we do best.",
+        "text": "",
+        "layout": "stacked",
+        "columns": "3",
+        "alt_bg": false
+      }
+    },
+    "process": {
+      "type": "process",
+      "blocks": {
+        "b1": {
+          "type": "step",
+          "settings": {
+            "title": "Discovery",
+            "text": "We learn about your business, your customers and your goals."
+          }
+        },
+        "b2": {
+          "type": "step",
+          "settings": {
+            "title": "Proposal",
+            "text": "You receive a clear scope, timeline and price before any work starts."
+          }
+        },
+        "b3": {
+          "type": "step",
+          "settings": {
+            "title": "Design & Build",
+            "text": "We design and develop your website and share progress for your feedback."
+          }
+        },
+        "b4": {
+          "type": "step",
+          "settings": {
+            "title": "Launch & Support",
+            "text": "We publish your website and stay available for updates."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "eyebrow": "Process",
+        "heading": "How we work.",
+        "text": "",
+        "alt_bg": true
+      }
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "eyebrow": "Ready when you are",
+        "heading": "Have a project in mind?",
+        "text": "Tell us about your business and we will come back with a clear proposal.",
+        "button_label": "Start Your Project",
+        "button_url": "/pages/contact",
+        "show_whatsapp": true
+      }
+    }
+  },
+  "order": [
+    "header",
+    "intro",
+    "mission",
+    "expertise",
+    "process",
+    "cta"
+  ]
+}

@@ -1,24 +1,28 @@
 (function () {
-  document.documentElement.classList.add('js');
-
   // Mobile navigation
   var toggle = document.querySelector('[data-nav-toggle]');
   var nav = document.getElementById('SiteNav');
-  function closeNav() {
+  function setNav(open) {
     if (!toggle || !nav) return;
-    nav.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
+    nav.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.documentElement.style.overflow = open ? 'hidden' : '';
   }
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      setNav(!nav.classList.contains('is-open'));
     });
     nav.addEventListener('click', function (event) {
-      if (event.target.closest('a')) closeNav();
+      if (event.target.closest('a')) setNav(false);
     });
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') closeNav();
+      if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+        setNav(false);
+        toggle.focus();
+      }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 990) setNav(false);
     });
   }
 
@@ -42,21 +46,44 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '0px 0px -8% 0px' });
+    }, { rootMargin: '0px 0px -6% 0px' });
     items.forEach(function (el) { observer.observe(el); });
   }
 
-  // Pre-select the plan in the quote form when a pack button is clicked
-  document.querySelectorAll('.pack').forEach(function (pack) {
-    var link = pack.querySelector('a.button[href^="#"]');
-    var title = pack.querySelector('.pack__title');
-    var select = document.getElementById('DevisPlan');
-    if (!link || !title || !select) return;
-    link.addEventListener('click', function () {
-      var key = title.textContent.trim().toLowerCase().split(' ')[0];
-      Array.prototype.forEach.call(select.options, function (option) {
-        if (option.value.toLowerCase().indexOf(key) !== -1) select.value = option.value;
+  // Portfolio filters
+  document.querySelectorAll('[data-portfolio]').forEach(function (section) {
+    var buttons = section.querySelectorAll('[data-filter]');
+    var projects = section.querySelectorAll('[data-category]');
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var filter = button.getAttribute('data-filter');
+        buttons.forEach(function (b) {
+          var active = b === button;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        projects.forEach(function (project) {
+          project.hidden = filter !== 'all' && project.getAttribute('data-category') !== filter;
+          project.classList.add('is-visible');
+        });
       });
     });
   });
+
+  // Contact form: preselect the service from ?service=… and show the result message
+  var params = new URLSearchParams(window.location.search);
+  var wanted = (params.get('service') || '').toLowerCase();
+  var select = document.querySelector('[data-service-select]');
+  if (wanted && select) {
+    Array.prototype.some.call(select.options, function (option) {
+      if (option.value.toLowerCase().indexOf(wanted) === -1) return false;
+      select.value = option.value;
+      return true;
+    });
+  }
+  var message = document.querySelector('[data-form-message]');
+  if (message) {
+    message.scrollIntoView({ block: 'center' });
+    message.focus({ preventScroll: true });
+  }
 })();

@@ -1,0 +1,26 @@
+{%- if section.blocks.size > 0 -%}
+  <div class="marquee" style="--marquee-duration: {{ section.settings.speed }}s">
+    {%- for i in (1..2) -%}
+      <ul class="marquee__track"{% if i == 2 %} aria-hidden="true"{% endif %}>
+        {%- for block in section.blocks -%}
+          <li{% if i == 1 %} {{ block.shopify_attributes }}{% endif %}>{{ block.settings.text | escape }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Scrolling text",
+  "tag": "div",
+  "settings": [
+    { "type": "range", "id": "speed", "label": "Loop duration", "min": 10, "max": 60, "step": 5, "unit": "s", "default": 30 }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Text", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Shopify Development" }] }
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "Scrolling text", "blocks": [{ "type": "item" }, { "type": "item" }, { "type": "item" }] }]
+}
+{% endschema %}

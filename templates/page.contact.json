@@ -1,14 +1,26 @@
 {
   "sections": {
-    "main": { "type": "main-page" },
-    "devis": {
+    "header": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Contact",
+        "heading": "Let's start your project.",
+        "text": "",
+        "show_content": false
+      }
+    },
+    "form": {
       "type": "contact-form",
       "settings": {
-        "eyebrow": "Devis gratuit",
-        "heading": "Parlons de votre projet",
-        "text": "Décrivez-nous votre besoin : nous vous répondons avec une proposition claire et un devis adapté."
+        "eyebrow": "Project inquiry",
+        "heading": "Tell us about your project.",
+        "text": "Share a few details and we will reply with next steps and a clear proposal.",
+        "whatsapp_text": "Prefer to chat? Message us directly."
       }
     }
   },
-  "order": ["main", "devis"]
+  "order": [
+    "header",
+    "form"
+  ]
 }

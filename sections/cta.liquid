@@ -1,28 +1,38 @@
 <section class="section">
   <div class="container">
     <div class="cta reveal">
-      <h2 class="h2">{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 class="display display--cta">{{ section.settings.heading | escape }}</h2>
       {%- if section.settings.text != blank -%}<p class="lead">{{ section.settings.text | escape }}</p>{%- endif -%}
-      {%- if section.settings.button_label != blank -%}
-        <a class="button button--primary" href="{{ section.settings.button_url | default: '#devis' }}">
-          {{ section.settings.button_label | escape }}
-          {% render 'icon', name: 'arrow' %}
-        </a>
-      {%- endif -%}
+      <div class="cta__buttons">
+        {%- if section.settings.button_label != blank -%}
+          <a class="button button--primary" href="{{ section.settings.button_url | default: '/pages/contact' }}">
+            {{ section.settings.button_label | escape }} {% render 'icon', name: 'arrow' %}
+          </a>
+        {%- endif -%}
+        {%- if settings.whatsapp != blank and section.settings.show_whatsapp -%}
+          {%- assign wa = settings.whatsapp | remove: '+' | remove: ' ' | remove: '-' -%}
+          <a class="button button--ghost" href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">
+            {% render 'icon', name: 'whatsapp' %} {{ 'contact.whatsapp' | t }}
+          </a>
+        {%- endif -%}
+      </div>
     </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Appel à l'action",
+  "name": "Call to action",
   "tag": "div",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Un projet en tête ?" },
-    { "type": "textarea", "id": "text", "label": "Texte", "default": "Expliquez-nous votre idée, nous préparons votre devis." },
-    { "type": "text", "id": "button_label", "label": "Texte du bouton", "default": "Demander un devis" },
-    { "type": "url", "id": "button_url", "label": "Lien du bouton" }
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Ready when you are" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Have a project in mind?" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Tell us about your business and we will come back with a clear proposal." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Start Your Project" },
+    { "type": "url", "id": "button_url", "label": "Button link" },
+    { "type": "checkbox", "id": "show_whatsapp", "label": "Show WhatsApp button", "info": "Requires a WhatsApp number in theme settings.", "default": true }
   ],
-  "presets": [{ "name": "Appel à l'action" }]
+  "presets": [{ "name": "Call to action" }]
 }
 {% endschema %}

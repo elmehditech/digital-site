@@ -1,10 +1,11 @@
-<section class="section section--alt" id="{{ section.settings.anchor | default: 'avis' | handleize }}">
+<section class="section">
   <div class="container">
     {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
-    <div class="grid grid--3">
+    <div class="quotes">
       {%- for block in section.blocks -%}
-        <figure class="card quote reveal" {{ block.shopify_attributes }}>
-          <blockquote>« {{ block.settings.quote | escape }} »</blockquote>
+        <figure class="quote reveal" {{ block.shopify_attributes }}>
+          {%- if block.settings.placeholder -%}<span class="tag tag--static">{{ 'testimonials.placeholder' | t }}</span>{%- endif -%}
+          <blockquote>{{ block.settings.quote | escape }}</blockquote>
           <figcaption>
             <strong>{{ block.settings.author | escape }}</strong>
             {%- if block.settings.role != blank -%}<span class="muted">{{ block.settings.role | escape }}</span>{%- endif -%}
@@ -17,25 +18,25 @@
 
 {% schema %}
 {
-  "name": "Avis clients",
+  "name": "Testimonials",
   "tag": "div",
   "settings": [
-    { "type": "text", "id": "anchor", "label": "Ancre (lien #)", "default": "avis" },
-    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Avis clients" },
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Ils nous ont fait confiance" },
-    { "type": "textarea", "id": "text", "label": "Texte" }
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Testimonials" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What clients say." },
+    { "type": "textarea", "id": "text", "label": "Text" }
   ],
   "blocks": [
     {
       "type": "quote",
-      "name": "Avis",
+      "name": "Testimonial",
       "settings": [
-        { "type": "textarea", "id": "quote", "label": "Avis", "default": "Collez ici l'avis de votre client." },
-        { "type": "text", "id": "author", "label": "Nom", "default": "Nom du client" },
-        { "type": "text", "id": "role", "label": "Activité" }
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "Placeholder testimonial. Replace this text with a real quote from one of your clients." },
+        { "type": "text", "id": "author", "label": "Client name", "default": "Client name" },
+        { "type": "text", "id": "role", "label": "Role / company", "default": "Role, Company" },
+        { "type": "checkbox", "id": "placeholder", "label": "Mark as placeholder", "info": "Turn off once this is a real client testimonial.", "default": true }
       ]
     }
   ],
-  "presets": [{ "name": "Avis clients", "blocks": [{ "type": "quote" }, { "type": "quote" }, { "type": "quote" }] }]
+  "presets": [{ "name": "Testimonials", "blocks": [{ "type": "quote" }, { "type": "quote" }, { "type": "quote" }] }]
 }
 {% endschema %}

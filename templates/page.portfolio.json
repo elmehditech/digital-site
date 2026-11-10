@@ -1,0 +1,111 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Portfolio",
+        "heading": "Selected projects.",
+        "text": "A look at the kind of websites and stores we build. Replace these placeholder projects with your own work.",
+        "show_content": false
+      }
+    },
+    "gallery": {
+      "type": "portfolio",
+      "blocks": {
+        "b1": {
+          "type": "project",
+          "settings": {
+            "title": "Project name 01",
+            "category": "E-commerce",
+            "text": "Placeholder project. Replace this text with a short description of the work you delivered.",
+            "button_label": "View Project",
+            "link": "/pages/contact"
+          }
+        },
+        "b2": {
+          "type": "project",
+          "settings": {
+            "title": "Project name 02",
+            "category": "Healthcare",
+            "text": "Placeholder project. Replace this text with a short description of the work you delivered.",
+            "button_label": "View Project",
+            "link": "/pages/contact"
+          }
+        },
+        "b3": {
+          "type": "project",
+          "settings": {
+            "title": "Project name 03",
+            "category": "Business",
+            "text": "Placeholder project. Replace this text with a short description of the work you delivered.",
+            "button_label": "View Project",
+            "link": "/pages/contact"
+          }
+        },
+        "b4": {
+          "type": "project",
+          "settings": {
+            "title": "Project name 04",
+            "category": "Landing page",
+            "text": "Placeholder project. Replace this text with a short description of the work you delivered.",
+            "button_label": "View Project",
+            "link": "/pages/contact"
+          }
+        },
+        "b5": {
+          "type": "project",
+          "settings": {
+            "title": "Project name 05",
+            "category": "E-commerce",
+            "text": "Placeholder project. Replace this text with a short description of the work you delivered.",
+            "button_label": "View Project",
+            "link": "/pages/contact"
+          }
+        },
+        "b6": {
+          "type": "project",
+          "settings": {
+            "title": "Project name 06",
+            "category": "Business",
+            "text": "Placeholder project. Replace this text with a short description of the work you delivered.",
+            "button_label": "View Project",
+            "link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "button_label": "",
+        "show_filters": true,
+        "flush_top": true,
+        "columns": "3"
+      }
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "eyebrow": "Ready when you are",
+        "heading": "Have a project in mind?",
+        "text": "Tell us about your business and we will come back with a clear proposal.",
+        "button_label": "Start Your Project",
+        "button_url": "/pages/contact",
+        "show_whatsapp": true
+      }
+    }
+  },
+  "order": [
+    "header",
+    "gallery",
+    "cta"
+  ]
+}

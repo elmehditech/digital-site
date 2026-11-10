@@ -3,263 +3,377 @@
     "hero": {
       "type": "hero",
       "blocks": {
-        "s1": {
-          "type": "stat",
+        "b1": {
+          "type": "chip",
           "settings": {
-            "value": "699 DH",
-            "label": "À partir de"
+            "label": "Shopify"
           }
         },
-        "s2": {
-          "type": "stat",
+        "b2": {
+          "type": "chip",
           "settings": {
-            "value": "4 formules",
-            "label": "Pour chaque besoin"
+            "label": "UX / UI"
           }
         },
-        "s3": {
-          "type": "stat",
+        "b3": {
+          "type": "chip",
           "settings": {
-            "value": "Gratuit",
-            "label": "Devis sur mesure"
+            "label": "Performance"
           }
         }
       },
       "block_order": [
-        "s1",
-        "s2",
-        "s3"
+        "b1",
+        "b2",
+        "b3"
       ],
       "settings": {
-        "eyebrow": "Agence de création de sites web",
-        "heading": "Un site professionnel qui",
-        "heading_accent": "fait grandir votre activité.",
-        "text": "Landing page, site vitrine, boutique Shopify ou développement sur mesure : nous concevons le site qu'il vous faut, à un prix clair.",
-        "button_label": "Voir nos formules",
-        "button_url": "#formules",
-        "button2_label": "Demander un devis",
-        "button2_url": "#devis"
+        "eyebrow": "Web Development Agency",
+        "heading": "We Build Digital Experiences That",
+        "heading_accent": "Grow Businesses.",
+        "text": "We design and develop Shopify stores, e-commerce platforms and business websites that look premium, load fast and turn visitors into customers.",
+        "button_label": "Start Your Project",
+        "button_url": "/pages/contact",
+        "button2_label": "Explore Our Work",
+        "button2_url": "/pages/portfolio",
+        "show_visual": true
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "text": "Shopify Store Development"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "text": "E-commerce Website Development"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "text": "Business Website Design"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "text": "Landing Page Development"
+          }
+        },
+        "b5": {
+          "type": "item",
+          "settings": {
+            "text": "Website Redesign"
+          }
+        },
+        "b6": {
+          "type": "item",
+          "settings": {
+            "text": "Website Maintenance & Optimization"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ],
+      "settings": {
+        "speed": 35
       }
     },
     "services": {
-      "type": "services",
+      "type": "services-overview",
       "blocks": {
-        "a": {
+        "b1": {
           "type": "service",
           "settings": {
-            "title": "Landing page",
-            "text": "Une page unique, pensée pour présenter une offre et transformer vos visiteurs en clients."
+            "title": "Shopify Store Development",
+            "text": "A complete Shopify store, designed around your brand and ready to sell.",
+            "link": "/pages/services#shopify-store-development"
           }
         },
-        "b": {
+        "b2": {
           "type": "service",
           "settings": {
-            "title": "Site vitrine",
-            "text": "Présentez votre activité, vos services et vos coordonnées. Idéal pour médecins, dentistes, cabinets et commerces."
+            "title": "E-commerce Website Development",
+            "text": "Online stores built to make buying simple on every device.",
+            "link": "/pages/services#e-commerce-website-development"
           }
         },
-        "c": {
+        "b3": {
           "type": "service",
           "settings": {
-            "title": "Boutique Shopify",
-            "text": "Une boutique en ligne complète pour vendre vos produits et encaisser vos commandes."
+            "title": "Business Website Design",
+            "text": "A professional website that presents your company and services clearly.",
+            "link": "/pages/services#business-website-design"
           }
         },
-        "d": {
+        "b4": {
           "type": "service",
           "settings": {
-            "title": "Développement sur mesure",
-            "text": "Un besoin spécifique ? Nous étudions votre projet et développons la solution adaptée."
+            "title": "Landing Page Development",
+            "text": "One focused page designed to turn visitors into leads.",
+            "link": "/pages/services#landing-page-development"
+          }
+        },
+        "b5": {
+          "type": "service",
+          "settings": {
+            "title": "Website Redesign",
+            "text": "A modern look and better experience for a site that feels dated.",
+            "link": "/pages/services#website-redesign"
+          }
+        },
+        "b6": {
+          "type": "service",
+          "settings": {
+            "title": "Website Maintenance & Optimization",
+            "text": "Updates, fixes and performance improvements after launch.",
+            "link": "/pages/services#website-maintenance-optimization"
           }
         }
       },
       "block_order": [
-        "a",
-        "b",
-        "c",
-        "d"
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
       ],
       "settings": {
-        "anchor": "services",
-        "eyebrow": "Nos services",
-        "heading": "Tout ce qu'il faut pour être en ligne",
+        "eyebrow": "Services",
+        "heading": "Everything your business needs online.",
         "text": "",
-        "columns": "4"
+        "button_label": "All services",
+        "button_url": "/pages/services"
       }
     },
-    "packs": {
-      "type": "packs",
+    "projects": {
+      "type": "portfolio",
       "blocks": {
-        "p1": {
-          "type": "pack",
+        "b1": {
+          "type": "project",
           "settings": {
-            "title": "Landing Page",
-            "subtitle": "Une page professionnelle pour présenter votre offre",
-            "price_prefix": "",
-            "price": "699 DH",
-            "features": "Une page au design professionnel\nAdaptée mobile, tablette et ordinateur\nBouton d'appel et WhatsApp\nFormulaire de contact",
-            "badge": "",
-            "highlight": false,
-            "button_label": "Choisir cette formule",
-            "button_url": "#devis"
+            "title": "Project name 01",
+            "category": "E-commerce",
+            "text": "Placeholder project. Replace this text with a short description of the work you delivered.",
+            "button_label": "View Project",
+            "link": "/pages/portfolio"
           }
         },
-        "p2": {
-          "type": "pack",
+        "b2": {
+          "type": "project",
           "settings": {
-            "title": "Site Vitrine",
-            "subtitle": "Pour médecins, dentistes, cabinets et professionnels",
-            "price_prefix": "",
-            "price": "1 699 DH",
-            "features": "Site de présentation de votre activité\nPages services, à propos et contact\nCoordonnées, horaires et localisation\nAdapté mobile, tablette et ordinateur",
-            "badge": "",
-            "highlight": false,
-            "button_label": "Choisir cette formule",
-            "button_url": "#devis"
+            "title": "Project name 02",
+            "category": "Healthcare",
+            "text": "Placeholder project. Replace this text with a short description of the work you delivered.",
+            "button_label": "View Project",
+            "link": "/pages/portfolio"
           }
         },
-        "p3": {
-          "type": "pack",
+        "b3": {
+          "type": "project",
           "settings": {
-            "title": "Boutique Shopify",
-            "subtitle": "Votre boutique en ligne prête à vendre",
-            "price_prefix": "",
-            "price": "2 499 DH",
-            "features": "Création de votre boutique Shopify\nDesign personnalisé à votre marque\nMise en place des produits\nConfiguration du paiement et de la livraison",
-            "badge": "E-commerce",
-            "highlight": true,
-            "button_label": "Choisir cette formule",
-            "button_url": "#devis"
+            "title": "Project name 03",
+            "category": "Business",
+            "text": "Placeholder project. Replace this text with a short description of the work you delivered.",
+            "button_label": "View Project",
+            "link": "/pages/portfolio"
           }
         },
-        "p4": {
-          "type": "pack",
+        "b4": {
+          "type": "project",
           "settings": {
-            "title": "Développement sur mesure",
-            "subtitle": "Un projet web spécifique, étudié avec vous",
-            "price_prefix": "",
-            "price": "Sur devis",
-            "features": "Échange sur votre besoin\nAnalyse et proposition technique\nDevis détaillé et personnalisé\nDéveloppement adapté à votre projet",
-            "badge": "",
-            "highlight": false,
-            "button_label": "Demander un devis",
-            "button_url": "#devis"
+            "title": "Project name 04",
+            "category": "Landing page",
+            "text": "Placeholder project. Replace this text with a short description of the work you delivered.",
+            "button_label": "View Project",
+            "link": "/pages/portfolio"
           }
         }
       },
       "block_order": [
-        "p1",
-        "p2",
-        "p3",
-        "p4"
+        "b1",
+        "b2",
+        "b3",
+        "b4"
       ],
       "settings": {
-        "anchor": "formules",
-        "eyebrow": "Nos formules",
-        "heading": "Des prix clairs, sans surprise",
-        "text": "Choisissez la formule qui correspond à votre projet. Pour un besoin particulier, nous préparons un devis.",
-        "note": ""
+        "eyebrow": "Selected work",
+        "heading": "Featured projects.",
+        "text": "",
+        "button_label": "View all projects",
+        "button_url": "/pages/portfolio",
+        "show_filters": false,
+        "flush_top": false,
+        "columns": "2"
+      }
+    },
+    "why": {
+      "type": "features",
+      "blocks": {
+        "b1": {
+          "type": "feature",
+          "settings": {
+            "title": "Clear pricing",
+            "text": "Fixed packages and detailed quotes, agreed before any work begins."
+          }
+        },
+        "b2": {
+          "type": "feature",
+          "settings": {
+            "title": "Mobile-first design",
+            "text": "Every page is designed for phones first, then scaled up to larger screens."
+          }
+        },
+        "b3": {
+          "type": "feature",
+          "settings": {
+            "title": "Built to convert",
+            "text": "Layouts and calls to action are planned around what you want visitors to do."
+          }
+        },
+        "b4": {
+          "type": "feature",
+          "settings": {
+            "title": "Direct communication",
+            "text": "You talk to the people building your website, with no middle layers."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "eyebrow": "Why choose us",
+        "heading": "A partner, not just a supplier.",
+        "text": "We keep things simple: clear prices, clean design and direct communication from first message to launch.",
+        "layout": "split",
+        "columns": "2",
+        "alt_bg": true
       }
     },
     "process": {
       "type": "process",
       "blocks": {
-        "e1": {
+        "b1": {
           "type": "step",
           "settings": {
-            "title": "Échange",
-            "text": "Vous nous expliquez votre activité et vos objectifs."
+            "title": "Discovery",
+            "text": "We learn about your business, your customers and your goals."
           }
         },
-        "e2": {
+        "b2": {
           "type": "step",
           "settings": {
-            "title": "Proposition",
-            "text": "Nous vous conseillons la formule adaptée ou préparons votre devis."
+            "title": "Proposal",
+            "text": "You receive a clear scope, timeline and price before any work starts."
           }
         },
-        "e3": {
+        "b3": {
           "type": "step",
           "settings": {
-            "title": "Création",
-            "text": "Nous concevons votre site et vous le présentons pour validation."
+            "title": "Design & Build",
+            "text": "We design and develop your website and share progress for your feedback."
           }
         },
-        "e4": {
+        "b4": {
           "type": "step",
           "settings": {
-            "title": "Mise en ligne",
-            "text": "Votre site est publié et prêt à accueillir vos clients."
+            "title": "Launch & Support",
+            "text": "We publish your website and stay available for updates."
           }
         }
       },
       "block_order": [
-        "e1",
-        "e2",
-        "e3",
-        "e4"
+        "b1",
+        "b2",
+        "b3",
+        "b4"
       ],
       "settings": {
-        "anchor": "methode",
-        "eyebrow": "Notre méthode",
-        "heading": "Comment ça se passe",
-        "text": ""
+        "eyebrow": "Process",
+        "heading": "How we work.",
+        "text": "",
+        "alt_bg": false
       }
     },
-    "faq": {
-      "type": "faq",
+    "testimonials": {
+      "type": "testimonials",
       "blocks": {
-        "q1": {
-          "type": "question",
+        "b1": {
+          "type": "quote",
           "settings": {
-            "question": "Quelle formule choisir ?",
-            "answer": "<p>La landing page convient pour présenter une seule offre. Le site vitrine présente toute votre activité (cabinet, commerce, service). La boutique Shopify est faite pour vendre en ligne. Pour tout autre besoin, demandez un devis sur mesure.</p>"
+            "quote": "Placeholder testimonial. Replace this text with a real quote from one of your clients.",
+            "author": "Client name",
+            "role": "Role, Company",
+            "placeholder": true
           }
         },
-        "q2": {
-          "type": "question",
+        "b2": {
+          "type": "quote",
           "settings": {
-            "question": "Comment obtenir un devis pour un projet sur mesure ?",
-            "answer": "<p>Remplissez le formulaire en bas de page en décrivant votre projet. Nous en discutons avec vous, puis nous vous envoyons un devis détaillé.</p>"
+            "quote": "Placeholder testimonial. Replace this text with a real quote from one of your clients.",
+            "author": "Client name",
+            "role": "Role, Company",
+            "placeholder": true
           }
         },
-        "q3": {
-          "type": "question",
+        "b3": {
+          "type": "quote",
           "settings": {
-            "question": "Je ne sais pas ce dont j'ai besoin, que faire ?",
-            "answer": "<p>Contactez-nous : nous vous posons quelques questions sur votre activité et vous orientons vers la solution la plus adaptée.</p>"
+            "quote": "Placeholder testimonial. Replace this text with a real quote from one of your clients.",
+            "author": "Client name",
+            "role": "Role, Company",
+            "placeholder": true
           }
         }
       },
       "block_order": [
-        "q1",
-        "q2",
-        "q3"
+        "b1",
+        "b2",
+        "b3"
       ],
       "settings": {
-        "anchor": "faq",
-        "eyebrow": "FAQ",
-        "heading": "Questions fréquentes",
+        "eyebrow": "Testimonials",
+        "heading": "What clients say.",
         "text": ""
       }
     },
-    "devis": {
-      "type": "contact-form",
+    "cta": {
+      "type": "cta",
       "settings": {
-        "anchor": "devis",
-        "eyebrow": "Devis gratuit",
-        "heading": "Parlons de votre projet",
-        "text": "Décrivez-nous votre besoin : nous vous répondons avec une proposition claire et un devis adapté.",
-        "plans": "Landing page professionnelle – 699 DH\nSite vitrine – 1 699 DH\nBoutique Shopify – 2 499 DH\nDéveloppement sur mesure – sur devis\nJe ne sais pas encore"
+        "eyebrow": "Ready when you are",
+        "heading": "Have a project in mind?",
+        "text": "Tell us about your business and we will come back with a clear proposal.",
+        "button_label": "Start Your Project",
+        "button_url": "/pages/contact",
+        "show_whatsapp": true
       }
     }
   },
   "order": [
     "hero",
+    "marquee",
     "services",
-    "packs",
+    "projects",
+    "why",
     "process",
-    "faq",
-    "devis"
+    "testimonials",
+    "cta"
   ]
 }

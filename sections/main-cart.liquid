@@ -3,7 +3,7 @@
     <h1 class="h1 h1--page">{{ 'cart.title' | t }}</h1>
     {%- if cart.item_count == 0 -%}
       <p class="lead">{{ 'cart.empty' | t }}</p>
-      <a class="button button--primary" href="{{ routes.root_url }}#formules">{{ 'general.continue' | t }}</a>
+      <a class="button button--primary" href="{{ routes.root_url }}pages/pricing">{{ 'general.continue' | t }}</a>
     {%- else -%}
       <form action="{{ routes.cart_url }}" method="post" class="cart">
         <ul class="cart__items">
@@ -38,5 +38,5 @@
 </section>
 
 {% schema %}
-{ "name": "Panier", "tag": "div" }
+{ "name": "Cart", "tag": "div" }
 {% endschema %}

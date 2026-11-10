@@ -1,0 +1,43 @@
+<section class="section">
+  <div class="container">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text, button_label: section.settings.button_label, button_url: section.settings.button_url %}
+    <ul class="rows">
+      {%- for block in section.blocks -%}
+        <li class="reveal" {{ block.shopify_attributes }}>
+          <a class="row" href="{{ block.settings.link | default: '/pages/services' }}">
+            <span class="row__num">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            <h3 class="row__title">{{ block.settings.title | escape }}</h3>
+            <p class="row__text">{{ block.settings.text | escape }}</p>
+            <span class="row__arrow">{% render 'icon', name: 'arrow' %}</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Services overview",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Services" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Everything your business needs online." },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Link label", "default": "All services" },
+    { "type": "url", "id": "button_url", "label": "Link" }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Service name" },
+        { "type": "textarea", "id": "text", "label": "Short description", "default": "Describe this service in one sentence." },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Services overview", "blocks": [{ "type": "service" }, { "type": "service" }, { "type": "service" }] }]
+}
+{% endschema %}

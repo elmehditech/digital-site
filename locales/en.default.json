@@ -1,0 +1,80 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "whatsapp": "Chat with us on WhatsApp",
+    "menu": "Menu",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "back_home": "Back to home",
+    "continue": "View our pricing",
+    "read_more": "Read more",
+    "previous": "Previous",
+    "next": "Next",
+    "rights": "All rights reserved."
+  },
+  "not_found": {
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist or has been moved."
+  },
+  "portfolio": {
+    "all": "All",
+    "filter": "Filter projects by industry",
+    "image_placeholder": "Project image"
+  },
+  "testimonials": {
+    "placeholder": "Placeholder"
+  },
+  "product": {
+    "add_to_cart": "Order this package",
+    "sold_out": "Unavailable",
+    "option": "Option"
+  },
+  "collection": {
+    "empty": "Nothing here yet.",
+    "view": "View details"
+  },
+  "cart": {
+    "title": "Your order",
+    "empty": "Your order is empty.",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "remove": "Remove",
+    "update": "Update",
+    "checkout": "Checkout",
+    "note": "Taxes and any fees are calculated at the next step."
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "What are you looking for?",
+    "submit": "Search",
+    "results": "Results for “{{ terms }}”",
+    "no_results": "No results for “{{ terms }}”."
+  },
+  "blog": {
+    "empty": "No articles yet.",
+    "by": "By {{ author }}"
+  },
+  "password": {
+    "title": "Coming soon",
+    "text": "Our website is launching very soon.",
+    "label": "Password",
+    "submit": "Enter"
+  },
+  "contact": {
+    "success": "Thank you. Your request has been sent and we will get back to you shortly.",
+    "error": "Please check the form fields and try again.",
+    "name": "Full name",
+    "email": "Email",
+    "business": "Business name",
+    "service": "Service required",
+    "budget": "Budget",
+    "message": "Project details",
+    "send": "Send my request",
+    "whatsapp": "Chat on WhatsApp",
+    "phone": "Phone",
+    "location": "Location"
+  }
+}

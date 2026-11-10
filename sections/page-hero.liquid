@@ -1,0 +1,24 @@
+<section class="page-hero">
+  <div class="container">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow hero-in" style="--d: 0">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+    <h1 class="display display--page hero-in" style="--d: 1">{{ section.settings.heading | default: page.title | escape }}</h1>
+    {%- if section.settings.text != blank -%}<p class="lead page-hero__text hero-in" style="--d: 2">{{ section.settings.text | escape }}</p>{%- endif -%}
+    {%- if page.content != blank and section.settings.show_content -%}
+      <div class="rte page-hero__content">{{ page.content }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page header",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Headline", "info": "Leave empty to use the page title." },
+    { "type": "textarea", "id": "text", "label": "Introduction" },
+    { "type": "checkbox", "id": "show_content", "label": "Show the page content from Shopify admin", "default": false }
+  ],
+  "presets": [{ "name": "Page header" }]
+}
+{% endschema %}

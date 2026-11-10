@@ -1,8 +1,17 @@
-{%- comment -%} Usage: {% render 'section-head', eyebrow: x, heading: y, text: z %} {%- endcomment -%}
+{%- comment -%} Usage: {% render 'section-head', eyebrow: x, heading: y, text: z, button_label: a, button_url: b %} {%- endcomment -%}
 {%- if eyebrow != blank or heading != blank or text != blank -%}
   <div class="section-head reveal">
-    {%- if eyebrow != blank -%}<p class="eyebrow">{{ eyebrow | escape }}</p>{%- endif -%}
-    {%- if heading != blank -%}<h2 class="h2">{{ heading | escape }}</h2>{%- endif -%}
-    {%- if text != blank -%}<p class="lead">{{ text | escape }}</p>{%- endif -%}
+    <div class="section-head__main">
+      {%- if eyebrow != blank -%}<p class="eyebrow">{{ eyebrow | escape }}</p>{%- endif -%}
+      {%- if heading != blank -%}<h2 class="h2">{{ heading | escape }}</h2>{%- endif -%}
+    </div>
+    {%- if text != blank or button_label != blank -%}
+      <div class="section-head__side">
+        {%- if text != blank -%}<p class="lead">{{ text | escape }}</p>{%- endif -%}
+        {%- if button_label != blank and button_url != blank -%}
+          <a class="text-link" href="{{ button_url }}">{{ button_label | escape }} {% render 'icon', name: 'arrow' %}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
   </div>
 {%- endif -%}

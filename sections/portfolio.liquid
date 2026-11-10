@@ -1,20 +1,40 @@
-<section class="section" id="{{ section.settings.anchor | default: 'realisations' | handleize }}">
+{%- assign categories = section.blocks | map: 'settings' | map: 'category' | compact | uniq -%}
+<section class="section{% if section.settings.flush_top %} section--flush-top{% endif %}" data-portfolio>
   <div class="container">
-    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
-    <div class="grid grid--3">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text, button_label: section.settings.button_label, button_url: section.settings.button_url %}
+
+    {%- if section.settings.show_filters and categories.size > 1 -%}
+      <div class="filters reveal" role="group" aria-label="{{ 'portfolio.filter' | t }}">
+        <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">{{ 'portfolio.all' | t }}</button>
+        {%- for category in categories -%}
+          {%- if category != blank -%}
+            <button type="button" class="filter" data-filter="{{ category | handleize }}" aria-pressed="false">{{ category | escape }}</button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="projects projects--{{ section.settings.columns }}">
       {%- for block in section.blocks -%}
-        <article class="work reveal" {{ block.shopify_attributes }}>
-          {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" target="_blank" rel="noopener" class="work__link">{%- endif -%}
-          <div class="work__media">
+        <article class="project reveal" data-category="{{ block.settings.category | handleize }}" {{ block.shopify_attributes }}>
+          <div class="project__media">
             {%- if block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 900px) 33vw, 100vw', widths: '450, 900' }}
+              {{ block.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw', widths: '480, 800, 1100, 1400' }}
             {%- else -%}
-              {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+              <div class="project__placeholder"><span>{{ 'portfolio.image_placeholder' | t }}</span></div>
+            {%- endif -%}
+            {%- if block.settings.category != blank -%}<span class="tag">{{ block.settings.category | escape }}</span>{%- endif -%}
+          </div>
+          <div class="project__body">
+            <h3 class="h3">{{ block.settings.title | escape }}</h3>
+            {%- if block.settings.text != blank -%}<p class="muted">{{ block.settings.text | escape }}</p>{%- endif -%}
+            {%- if block.settings.button_label != blank and block.settings.link != blank -%}
+              <a class="text-link" href="{{ block.settings.link }}">
+                {{ block.settings.button_label | escape }} {% render 'icon', name: 'arrow' %}
+                <span class="visually-hidden">: {{ block.settings.title | escape }}</span>
+              </a>
             {%- endif -%}
           </div>
-          <h3 class="h3">{{ block.settings.title | escape }}</h3>
-          {%- if block.settings.category != blank -%}<p class="muted">{{ block.settings.category | escape }}</p>{%- endif -%}
-          {%- if block.settings.link != blank -%}</a>{%- endif -%}
         </article>
       {%- endfor -%}
     </div>
@@ -23,26 +43,35 @@
 
 {% schema %}
 {
-  "name": "Réalisations",
+  "name": "Portfolio",
   "tag": "div",
   "settings": [
-    { "type": "text", "id": "anchor", "label": "Ancre (lien #)", "default": "realisations" },
-    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Réalisations" },
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Quelques projets récents" },
-    { "type": "textarea", "id": "text", "label": "Texte" }
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Selected work" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Featured projects." },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Link label" },
+    { "type": "url", "id": "button_url", "label": "Link" },
+    { "type": "checkbox", "id": "show_filters", "label": "Show industry filters", "default": false },
+    { "type": "checkbox", "id": "flush_top", "label": "Reduce top spacing", "default": false },
+    {
+      "type": "select", "id": "columns", "label": "Columns on desktop", "default": "2",
+      "options": [{ "value": "2", "label": "2" }, { "value": "3", "label": "3" }]
+    }
   ],
   "blocks": [
     {
       "type": "project",
-      "name": "Projet",
+      "name": "Project",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "title", "label": "Nom du projet", "default": "Nom du projet" },
-        { "type": "text", "id": "category", "label": "Type de site" },
-        { "type": "url", "id": "link", "label": "Lien du site" }
+        { "type": "image_picker", "id": "image", "label": "Project image" },
+        { "type": "text", "id": "title", "label": "Project name", "default": "Project name" },
+        { "type": "text", "id": "category", "label": "Industry category", "default": "E-commerce" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Short description of the project and what was delivered." },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "View Project" },
+        { "type": "url", "id": "link", "label": "Project link", "info": "The button is hidden while this is empty." }
       ]
     }
   ],
-  "presets": [{ "name": "Réalisations", "blocks": [{ "type": "project" }, { "type": "project" }, { "type": "project" }] }]
+  "presets": [{ "name": "Portfolio", "blocks": [{ "type": "project" }, { "type": "project" }] }]
 }
 {% endschema %}
