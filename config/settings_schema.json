@@ -10,45 +10,142 @@
   {
     "name": "Couleurs",
     "settings": [
-      { "type": "color", "id": "color_bg", "label": "Fond", "default": "#0b0b0c" },
-      { "type": "color", "id": "color_surface", "label": "Fond des cartes", "default": "#151517" },
-      { "type": "color", "id": "color_border", "label": "Bordures", "default": "#2a2a2e" },
-      { "type": "color", "id": "color_text", "label": "Texte", "default": "#f4f1ea" },
-      { "type": "color", "id": "color_muted", "label": "Texte secondaire", "default": "#a8a39a" },
-      { "type": "color", "id": "color_accent", "label": "Accent (boutons, détails)", "default": "#c9a24b" },
-      { "type": "color", "id": "color_accent_text", "label": "Texte sur accent", "default": "#0b0b0c" }
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Fond",
+        "default": "#060b1a"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Fond des cartes",
+        "default": "#0d1630"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Bordures",
+        "default": "#1f2d52"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Texte",
+        "default": "#eef3ff"
+      },
+      {
+        "type": "color",
+        "id": "color_muted",
+        "label": "Texte secondaire",
+        "default": "#9dabca"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Couleur principale (boutons, bordures)",
+        "default": "#2563eb"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_text",
+        "label": "Texte sur la couleur principale",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_highlight",
+        "label": "Couleur secondaire (titres, prix, détails)",
+        "default": "#22d3ee"
+      }
     ]
   },
   {
     "name": "Typographie",
     "settings": [
-      { "type": "font_picker", "id": "font_heading", "label": "Titres", "default": "playfair_display_n7" },
-      { "type": "font_picker", "id": "font_body", "label": "Texte", "default": "dm_sans_n4" }
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Titres",
+        "default": "playfair_display_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Texte",
+        "default": "dm_sans_n4"
+      }
     ]
   },
   {
     "name": "Logo",
     "settings": [
-      { "type": "image_picker", "id": "logo", "label": "Logo" },
-      { "type": "range", "id": "logo_width", "label": "Largeur du logo", "min": 50, "max": 250, "step": 10, "unit": "px", "default": 130 },
-      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Largeur du logo",
+        "min": 50,
+        "max": 250,
+        "step": 10,
+        "unit": "px",
+        "default": 130
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
     ]
   },
   {
     "name": "Contact",
     "settings": [
-      { "type": "text", "id": "whatsapp", "label": "Numéro WhatsApp", "info": "Format international, ex. +212600000000. Laissez vide pour masquer le bouton." },
-      { "type": "text", "id": "phone", "label": "Téléphone" },
-      { "type": "text", "id": "email", "label": "E-mail" },
-      { "type": "text", "id": "address", "label": "Ville / adresse" }
+      {
+        "type": "text",
+        "id": "whatsapp",
+        "label": "Numéro WhatsApp",
+        "info": "Format international, ex. +212600000000. Laissez vide pour masquer le bouton."
+      },
+      {
+        "type": "text",
+        "id": "phone",
+        "label": "Téléphone"
+      },
+      {
+        "type": "text",
+        "id": "email",
+        "label": "E-mail"
+      },
+      {
+        "type": "text",
+        "id": "address",
+        "label": "Ville / adresse"
+      }
     ]
   },
   {
     "name": "Réseaux sociaux",
     "settings": [
-      { "type": "text", "id": "social_instagram", "label": "Lien Instagram" },
-      { "type": "text", "id": "social_facebook", "label": "Lien Facebook" },
-      { "type": "text", "id": "social_tiktok", "label": "Lien TikTok" }
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Lien Instagram"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Lien Facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "Lien TikTok"
+      }
     ]
   }
 ]
