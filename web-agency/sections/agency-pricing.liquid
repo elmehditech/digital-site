@@ -1,0 +1,225 @@
+<section class="ag-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_divider %} ag-section--line{% endif %}" style="--ag-pt: {{ section.settings.padding_top }}px; --ag-pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    {%- render 'agency-head',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text,
+      layout: section.settings.heading_layout
+    -%}
+
+    <ul class="ag-grid ag-grid--3 ag-plans" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign features = block.settings.features | newline_to_br | split: '<br />'
+          assign plan_url = block.settings.button_link
+          if plan_url != blank and section.settings.pass_package
+            assign plan_param = block.settings.name | url_encode
+            if plan_url contains '?'
+              assign plan_url = plan_url | append: '&package=' | append: plan_param
+            else
+              assign plan_url = plan_url | append: '?package=' | append: plan_param
+            endif
+          endif
+        -%}
+        <li class="ag-reveal" style="--ag-i: {{ forloop.index0 | modulo: 3 }};" {{ block.shopify_attributes }}>
+          <article class="ag-card ag-plan{% if block.settings.featured %} ag-plan--featured{% endif %}">
+            <div class="ag-plan__top">
+              <h3 class="ag-plan__name">{{ block.settings.name | escape }}</h3>
+              {%- if block.settings.featured and block.settings.badge != blank -%}
+                <span class="ag-chip ag-chip--accent">{{ block.settings.badge | escape }}</span>
+              {%- endif -%}
+            </div>
+            {%- if block.settings.tagline != blank -%}
+              <p class="ag-text">{{ block.settings.tagline | escape }}</p>
+            {%- endif -%}
+            <p class="ag-plan__price">
+              <strong>{{ block.settings.price | escape }}</strong>
+              {%- if block.settings.price_note != blank -%}
+                <span>{{ block.settings.price_note | escape }}</span>
+              {%- endif -%}
+            </p>
+            {%- if block.settings.features != blank -%}
+              <ul class="ag-list" role="list">
+                {%- for item in features -%}
+                  {%- assign item_text = item | strip -%}
+                  {%- if item_text != blank -%}
+                    <li>{{ item_text | escape }}</li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+            {%- if block.settings.button_label != blank and plan_url != blank -%}
+              <a class="ag-btn ag-btn--block{% unless block.settings.featured %} ag-btn--ghost{% endunless %}" href="{{ plan_url }}">
+                {{- block.settings.button_label | escape -}}
+                <span class="visually-hidden">: {{ block.settings.name | escape }}</span>
+                {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+              </a>
+            {%- endif -%}
+          </article>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if section.settings.note != blank -%}
+      <div class="ag-note ag-reveal">{{ section.settings.note }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Agency pricing",
+  "tag": "div",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Pricing"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Packages shaped around your goals."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "select",
+      "id": "heading_layout",
+      "label": "Heading layout",
+      "options": [
+        { "value": "split", "label": "Split" },
+        { "value": "stack", "label": "Stacked" },
+        { "value": "center", "label": "Centered" }
+      ],
+      "default": "split"
+    },
+    {
+      "type": "richtext",
+      "id": "note",
+      "label": "Note below packages",
+      "default": "<p>Every project is scoped individually. Tell us about yours and we will send a tailored quote.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "pass_package",
+      "label": "Send the package name to the contact form",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show top divider line",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 112
+    }
+  ],
+  "blocks": [
+    {
+      "type": "plan",
+      "name": "Package",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Package name",
+          "default": "Package"
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "Tagline",
+          "default": "Who this package is for."
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "Request a Quote",
+          "info": "Enter a price (for example \"From $2,500\") or keep \"Request a Quote\"."
+        },
+        {
+          "type": "text",
+          "id": "price_note",
+          "label": "Price note"
+        },
+        {
+          "type": "textarea",
+          "id": "features",
+          "label": "Features",
+          "info": "One per line.",
+          "default": "First feature\nSecond feature\nThird feature"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Highlight this package",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Highlight badge",
+          "default": "Most popular"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Request a Quote"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Agency pricing",
+      "blocks": [
+        { "type": "plan" },
+        { "type": "plan" },
+        { "type": "plan" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,119 @@
+<section class="ag-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_divider %} ag-section--line{% endif %}" style="--ag-pt: {{ section.settings.padding_top }}px; --ag-pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    {%- render 'agency-head',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text
+    -%}
+
+    <div class="ag-tech">
+      {%- for block in section.blocks -%}
+        {%- assign items = block.settings.items | split: ',' -%}
+        <div class="ag-tech__row ag-reveal" {{ block.shopify_attributes }}>
+          <h3 class="ag-h3">{{ block.settings.title | escape }}</h3>
+          <ul class="ag-chips" role="list">
+            {%- for item in items -%}
+              {%- assign item_text = item | strip -%}
+              {%- if item_text != blank -%}
+                <li class="ag-chip">{{ item_text | escape }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Agency expertise",
+  "tag": "div",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Technologies & Expertise"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A modern stack, chosen for each project."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show top divider line",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 112
+    }
+  ],
+  "blocks": [
+    {
+      "type": "group",
+      "name": "Group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Group title",
+          "default": "Group title"
+        },
+        {
+          "type": "textarea",
+          "id": "items",
+          "label": "Items",
+          "info": "Separate with commas.",
+          "default": "Item one, Item two, Item three"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Agency expertise",
+      "blocks": [
+        { "type": "group" },
+        { "type": "group" }
+      ]
+    }
+  ]
+}
+{% endschema %}

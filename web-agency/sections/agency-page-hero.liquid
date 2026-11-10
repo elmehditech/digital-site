@@ -1,0 +1,110 @@
+<section class="ag-section ag-hero ag-hero--page color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_divider %} ag-section--line{% endif %}" style="--ag-pt: {{ section.settings.padding_top }}px; --ag-pb: {{ section.settings.padding_bottom }}px;">
+  <div class="ag-hero__bg" aria-hidden="true"></div>
+  <div class="page-width">
+    <div class="ag-hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ag-eyebrow ag-reveal">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h1 class="ag-display ag-display--small ag-reveal" style="--ag-i: 1;">
+        {{- section.settings.heading | default: page.title -}}
+      </h1>
+      {%- if section.settings.text != blank -%}
+        <div class="ag-lead ag-reveal" style="--ag-i: 2;">{{ section.settings.text }}</div>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <div class="ag-btn-row ag-reveal" style="--ag-i: 3;">
+          <a class="ag-btn" href="{{ section.settings.button_link }}">
+            {{- section.settings.button_label | escape -}}
+            {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.show_page_content and page.content != blank -%}
+      <div class="ag-text rte ag-reveal" style="margin-top: 4rem; max-width: 72rem;">{{ page.content }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Agency page hero",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Page"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Leave empty to use the page title. Italic text is shown in the accent color."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Introduction"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_page_content",
+      "label": "Show page content from Shopify admin",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show top divider line",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 112
+    }
+  ],
+  "presets": [
+    {
+      "name": "Agency page hero"
+    }
+  ]
+}
+{% endschema %}

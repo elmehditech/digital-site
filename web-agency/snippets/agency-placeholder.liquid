@@ -1,0 +1,98 @@
+{%- doc -%}
+  Renders an abstract, brand-coloured interface illustration used when no image has been selected.
+  It is decorative and never represents a real client project.
+
+  @param {number} [variant] - Any number; cycles through four compositions
+
+  @example
+  {% render 'agency-placeholder', variant: forloop.index %}
+{%- enddoc -%}
+{%- liquid
+  assign ph_variant = variant | default: 1 | modulo: 4
+  assign ph_id = 'ph-' | append: section.id | append: '-' | append: variant
+-%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="{{ ph_id }}-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e1e1e"/>
+      <stop offset="1" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <radialGradient id="{{ ph_id }}-glow" cx="{% if ph_variant == 1 or ph_variant == 3 %}0.8{% else %}0.2{% endif %}" cy="{% if ph_variant < 2 %}0.1{% else %}0.9{% endif %}" r="0.8">
+      <stop offset="0" style="stop-color: rgb(var(--ag-accent))" stop-opacity="0.45"/>
+      <stop offset="1" style="stop-color: rgb(var(--ag-accent))" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="{{ ph_id }}-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" style="stop-color: rgb(var(--ag-accent))" stop-opacity="0.95"/>
+      <stop offset="1" style="stop-color: rgb(var(--ag-accent))" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#{{ ph_id }}-bg)"/>
+  <rect width="800" height="600" fill="url(#{{ ph_id }}-glow)"/>
+  {%- case ph_variant -%}
+    {%- when 1 -%}
+      <g transform="translate(110 90)">
+        <rect width="580" height="420" rx="18" fill="#161616" stroke="#fff" stroke-opacity="0.14"/>
+        <circle cx="26" cy="24" r="5" fill="#fff" fill-opacity="0.2"/><circle cx="44" cy="24" r="5" fill="#fff" fill-opacity="0.2"/><circle cx="62" cy="24" r="5" fill="#fff" fill-opacity="0.2"/>
+        <path d="M0 48h580" stroke="#fff" stroke-opacity="0.1"/>
+        <rect x="40" y="96" width="260" height="22" rx="4" fill="#fff" fill-opacity="0.9"/>
+        <rect x="40" y="130" width="200" height="22" rx="4" fill="#fff" fill-opacity="0.6"/>
+        <rect x="40" y="164" width="120" height="22" rx="4" style="fill: rgb(var(--ag-accent))"/>
+        <rect x="40" y="216" width="210" height="8" rx="4" fill="#fff" fill-opacity="0.18"/>
+        <rect x="40" y="234" width="160" height="8" rx="4" fill="#fff" fill-opacity="0.18"/>
+        <rect x="40" y="276" width="120" height="38" rx="19" style="fill: rgb(var(--ag-accent))"/>
+        <rect x="340" y="84" width="200" height="290" rx="12" fill="url(#{{ ph_id }}-gold)"/>
+      </g>
+    {%- when 2 -%}
+      <g transform="translate(80 100)">
+        <rect width="640" height="400" rx="18" fill="#161616" stroke="#fff" stroke-opacity="0.14"/>
+        <rect x="32" y="30" width="90" height="10" rx="5" style="fill: rgb(var(--ag-accent))"/>
+        <rect x="470" y="26" width="138" height="18" rx="9" fill="#fff" fill-opacity="0.1"/>
+        <rect x="32" y="76" width="180" height="210" rx="10" fill="url(#{{ ph_id }}-gold)"/>
+        <rect x="230" y="76" width="180" height="210" rx="10" fill="#fff" fill-opacity="0.07"/>
+        <rect x="428" y="76" width="180" height="210" rx="10" fill="#fff" fill-opacity="0.07"/>
+        <rect x="32" y="306" width="120" height="10" rx="5" fill="#fff" fill-opacity="0.7"/>
+        <rect x="230" y="306" width="120" height="10" rx="5" fill="#fff" fill-opacity="0.7"/>
+        <rect x="428" y="306" width="120" height="10" rx="5" fill="#fff" fill-opacity="0.7"/>
+        <rect x="32" y="328" width="60" height="8" rx="4" fill="#fff" fill-opacity="0.25"/>
+        <rect x="230" y="328" width="60" height="8" rx="4" fill="#fff" fill-opacity="0.25"/>
+        <rect x="428" y="328" width="60" height="8" rx="4" fill="#fff" fill-opacity="0.25"/>
+      </g>
+    {%- when 3 -%}
+      <g transform="translate(210 60)">
+        <rect width="220" height="470" rx="34" fill="#161616" stroke="#fff" stroke-opacity="0.16"/>
+        <rect x="80" y="18" width="60" height="8" rx="4" fill="#fff" fill-opacity="0.2"/>
+        <rect x="20" y="50" width="180" height="170" rx="14" fill="url(#{{ ph_id }}-gold)"/>
+        <rect x="20" y="242" width="140" height="14" rx="4" fill="#fff" fill-opacity="0.9"/>
+        <rect x="20" y="268" width="100" height="14" rx="4" fill="#fff" fill-opacity="0.55"/>
+        <rect x="20" y="310" width="180" height="8" rx="4" fill="#fff" fill-opacity="0.18"/>
+        <rect x="20" y="328" width="130" height="8" rx="4" fill="#fff" fill-opacity="0.18"/>
+        <rect x="20" y="394" width="180" height="44" rx="22" fill="#fff" fill-opacity="0.92"/>
+      </g>
+      <g transform="translate(400 130)">
+        <rect width="220" height="470" rx="34" fill="#1b1b1b" stroke="#fff" stroke-opacity="0.16"/>
+        <rect x="80" y="18" width="60" height="8" rx="4" fill="#fff" fill-opacity="0.2"/>
+        <rect x="20" y="50" width="84" height="100" rx="10" fill="#fff" fill-opacity="0.08"/>
+        <rect x="116" y="50" width="84" height="100" rx="10" fill="url(#{{ ph_id }}-gold)"/>
+        <rect x="20" y="162" width="84" height="100" rx="10" fill="url(#{{ ph_id }}-gold)"/>
+        <rect x="116" y="162" width="84" height="100" rx="10" fill="#fff" fill-opacity="0.08"/>
+        <rect x="20" y="290" width="150" height="12" rx="4" fill="#fff" fill-opacity="0.8"/>
+        <rect x="20" y="314" width="110" height="8" rx="4" fill="#fff" fill-opacity="0.2"/>
+      </g>
+    {%- else -%}
+      <g transform="translate(90 110)">
+        <rect width="620" height="380" rx="18" fill="#161616" stroke="#fff" stroke-opacity="0.14"/>
+        <path d="M200 0v380" stroke="#fff" stroke-opacity="0.1"/>
+        <circle cx="42" cy="44" r="10" style="fill: rgb(var(--ag-accent))"/>
+        <rect x="32" y="92" width="130" height="10" rx="5" fill="#fff" fill-opacity="0.55"/>
+        <rect x="32" y="122" width="100" height="10" rx="5" fill="#fff" fill-opacity="0.2"/>
+        <rect x="32" y="152" width="116" height="10" rx="5" fill="#fff" fill-opacity="0.2"/>
+        <rect x="32" y="182" width="90" height="10" rx="5" fill="#fff" fill-opacity="0.2"/>
+        <rect x="236" y="36" width="170" height="16" rx="4" fill="#fff" fill-opacity="0.9"/>
+        <rect x="236" y="84" width="160" height="110" rx="10" fill="#fff" fill-opacity="0.06" stroke="#fff" stroke-opacity="0.08"/>
+        <rect x="412" y="84" width="172" height="110" rx="10" fill="url(#{{ ph_id }}-gold)"/>
+        <path d="M236 330c40-10 60-70 110-64s60 50 110 26 70-74 128-70" fill="none" style="stroke: rgb(var(--ag-accent))" stroke-width="3" stroke-linecap="round"/>
+        <path d="M236 344h348" stroke="#fff" stroke-opacity="0.12"/>
+        <rect x="236" y="214" width="348" height="1" fill="#fff" fill-opacity="0.08"/>
+      </g>
+  {%- endcase -%}
+</svg>

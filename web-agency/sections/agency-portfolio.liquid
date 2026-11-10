@@ -1,0 +1,355 @@
+{%- liquid
+  assign projects = metaobjects[section.settings.metaobject_type].values
+  assign use_metaobjects = false
+  if section.settings.source == 'metaobject' and projects.size > 0
+    assign use_metaobjects = true
+  endif
+  assign sizes = '(min-width: 750px) 50vw, 100vw'
+-%}
+<section class="ag-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_divider %} ag-section--line{% endif %}" style="--ag-pt: {{ section.settings.padding_top }}px; --ag-pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    {%- render 'agency-head',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text,
+      link_label: section.settings.link_label,
+      link_url: section.settings.link_url
+    -%}
+
+    {%- if request.design_mode and section.settings.source == 'metaobject' and use_metaobjects == false -%}
+      <p class="ag-editor-note" style="margin-bottom: 3.2rem;">
+        No "{{ section.settings.metaobject_type | escape }}" metaobject entries found yet, so the placeholder project
+        blocks are shown. Add entries in Shopify admin &rsaquo; Content &rsaquo; Metaobjects (see README). (Only
+        visible in the theme editor.)
+      </p>
+    {%- endif -%}
+
+    <ul class="ag-work{% if section.settings.stagger %} ag-work--stagger{% endif %}" role="list">
+      {%- if use_metaobjects -%}
+        {%- for project in projects limit: section.settings.limit -%}
+          {%- liquid
+            assign project_url = project.system.url | default: project.project_url.value
+            assign project_services = project.services.value | join: ',' | split: ','
+            assign project_image = project.image.value
+            assign project_name = project.name.value | default: project.system.handle
+          -%}
+          <li class="ag-work__item ag-reveal">
+            {%- if project_url != blank -%}
+              <a class="ag-work__media" href="{{ project_url }}" tabindex="-1" aria-hidden="true">
+            {%- else -%}
+              <div class="ag-work__media">
+            {%- endif -%}
+            {%- if project_image != blank -%}
+              {{
+                project_image
+                | image_url: width: 1500
+                | image_tag: widths: '375, 550, 750, 1100, 1500', sizes: sizes, loading: 'lazy', alt: project_name
+              }}
+            {%- else -%}
+              {%- render 'agency-placeholder', variant: forloop.index -%}
+            {%- endif -%}
+            {%- if project_url != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+            <div class="ag-work__body">
+              <p class="ag-work__meta">
+                <span>{{ project.industry.value | escape }}</span>
+                <span aria-hidden="true">
+                  {%- if forloop.index < 10 -%}0{%- endif -%}
+                  {{- forloop.index -}}
+                </span>
+              </p>
+              <h3 class="ag-h3">{{ project_name | escape }}</h3>
+              {%- if project.description.value != blank -%}
+                <p class="ag-text">{{ project.description.value | escape }}</p>
+              {%- endif -%}
+              {%- if project_services.size > 0 -%}
+                <ul class="ag-chips" role="list" aria-label="{{ section.settings.services_label | escape }}">
+                  {%- for service in project_services -%}
+                    {%- assign service_text = service | strip -%}
+                    {%- if service_text != blank -%}
+                      <li class="ag-chip">{{ service_text | escape }}</li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+              {%- if project_url != blank and section.settings.button_label != blank -%}
+                <a class="ag-link" href="{{ project_url }}">
+                  {{- section.settings.button_label | escape -}}
+                  <span class="visually-hidden">: {{ project_name | escape }}</span>
+                  {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+                </a>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks limit: section.settings.limit -%}
+          {%- liquid
+            assign project_services = block.settings.services | split: ','
+            assign button_label = block.settings.button_label | default: section.settings.button_label
+          -%}
+          <li class="ag-work__item ag-reveal" {{ block.shopify_attributes }}>
+            <div class="ag-work__media">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 1500
+                  | image_tag: widths: '375, 550, 750, 1100, 1500', sizes: sizes, loading: 'lazy'
+                }}
+              {%- else -%}
+                {%- render 'agency-placeholder', variant: forloop.index -%}
+              {%- endif -%}
+              {%- if block.settings.badge != blank -%}
+                <span class="ag-work__badge">{{ block.settings.badge | escape }}</span>
+              {%- endif -%}
+            </div>
+            <div class="ag-work__body">
+              <p class="ag-work__meta">
+                <span>{{ block.settings.industry | escape }}</span>
+                <span aria-hidden="true">
+                  {%- if forloop.index < 10 -%}0{%- endif -%}
+                  {{- forloop.index -}}
+                </span>
+              </p>
+              <h3 class="ag-h3">{{ block.settings.title | escape }}</h3>
+              {%- if block.settings.description != blank -%}
+                <div class="ag-text">{{ block.settings.description }}</div>
+              {%- endif -%}
+              {%- if block.settings.services != blank -%}
+                <ul class="ag-chips" role="list" aria-label="{{ section.settings.services_label | escape }}">
+                  {%- for service in project_services -%}
+                    {%- assign service_text = service | strip -%}
+                    {%- if service_text != blank -%}
+                      <li class="ag-chip">{{ service_text | escape }}</li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+              {%- if block.settings.link != blank and button_label != blank -%}
+                <a class="ag-link" href="{{ block.settings.link }}">
+                  {{- button_label | escape -}}
+                  <span class="visually-hidden">: {{ block.settings.title | escape }}</span>
+                  {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+                </a>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
+    </ul>
+
+    {%- if section.settings.footer_label != blank and section.settings.footer_link != blank -%}
+      <div class="ag-section__foot ag-reveal">
+        <a class="ag-btn ag-btn--ghost" href="{{ section.settings.footer_link }}">
+          {{- section.settings.footer_label | escape -}}
+          {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Agency portfolio",
+  "tag": "div",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Selected Work"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured projects."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Heading link label"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Heading link"
+    },
+    {
+      "type": "header",
+      "content": "Projects source"
+    },
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Source",
+      "options": [
+        { "value": "metaobject", "label": "Metaobject entries (falls back to blocks)" },
+        { "value": "blocks", "label": "Section blocks only" }
+      ],
+      "default": "metaobject",
+      "info": "Metaobject entries let you manage projects in Shopify admin > Content > Metaobjects. Until entries exist, the blocks below are shown."
+    },
+    {
+      "type": "text",
+      "id": "metaobject_type",
+      "label": "Metaobject type",
+      "default": "portfolio_project",
+      "info": "Expected fields: name, industry, description, services (list), image, project_url."
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "label": "Maximum projects to show",
+      "default": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "stagger",
+      "label": "Staggered editorial layout",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Project button label",
+      "default": "View Project"
+    },
+    {
+      "type": "text",
+      "id": "services_label",
+      "label": "Services accessible label",
+      "default": "Services provided"
+    },
+    {
+      "type": "header",
+      "content": "Button below the gallery"
+    },
+    {
+      "type": "text",
+      "id": "footer_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "footer_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show top divider line",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 112
+    }
+  ],
+  "blocks": [
+    {
+      "type": "project",
+      "name": "Project",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Project image",
+          "info": "A built-in illustration is shown until you select an image."
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Image badge",
+          "default": "Sample layout",
+          "info": "Use it to flag placeholders. Leave empty for real projects."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Project name",
+          "default": "Project name"
+        },
+        {
+          "type": "text",
+          "id": "industry",
+          "label": "Industry",
+          "default": "Industry"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Summarise the challenge, the solution and the outcome of this project.</p>"
+        },
+        {
+          "type": "text",
+          "id": "services",
+          "label": "Services provided",
+          "info": "Separate with commas.",
+          "default": "Design, Development"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "info": "Leave empty to use the section's project button label."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Project link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Agency portfolio",
+      "blocks": [
+        { "type": "project" },
+        { "type": "project" }
+      ]
+    }
+  ]
+}
+{% endschema %}

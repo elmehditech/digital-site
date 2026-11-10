@@ -1,0 +1,24 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "agency-header": {
+      "type": "agency-header",
+      "settings": {
+        "logo_text": "",
+        "show_logo_mark": true,
+        "menu": "main-menu",
+        "cta_label": "Start Your Project",
+        "cta_link": "/pages/contact",
+        "whatsapp_label": "Chat on WhatsApp",
+        "enable_sticky": true,
+        "show_line": false,
+        "show_cart": false,
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "agency-header"
+  ]
+}

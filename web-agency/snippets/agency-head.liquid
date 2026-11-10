@@ -1,0 +1,52 @@
+{%- doc -%}
+  Renders the shared heading block of an agency section.
+
+  @param {string} [eyebrow] - Small label above the heading
+  @param {string} [heading] - Section heading (inline rich text)
+  @param {string} [text] - Supporting rich text
+  @param {string} [layout] - split, stack or center. Defaults to split
+  @param {string} [tag] - Heading tag, h1 or h2. Defaults to h2
+  @param {string} [heading_class] - Heading size class. Defaults to ag-h2
+  @param {string} [link_label] - Optional link label
+  @param {string} [link_url] - Optional link URL
+
+  @example
+  {% render 'agency-head', eyebrow: 'Services', heading: 'What we do', text: '<p>…</p>' %}
+{%- enddoc -%}
+{%- liquid
+  assign head_layout = layout | default: 'split'
+  assign head_tag = tag | default: 'h2'
+  assign head_class = heading_class | default: 'ag-h2'
+  assign has_aside = false
+  if text != blank
+    assign has_aside = true
+  endif
+  if link_label != blank and link_url != blank
+    assign has_aside = true
+  endif
+-%}
+{%- if eyebrow != blank or heading != blank or has_aside -%}
+  <div class="ag-head ag-head--{{ head_layout }} ag-reveal">
+    <div class="ag-head__title">
+      {%- if eyebrow != blank -%}
+        <p class="ag-eyebrow">{{ eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if heading != blank -%}
+        <{{ head_tag }} class="{{ head_class }}">{{ heading }}</{{ head_tag }}>
+      {%- endif -%}
+    </div>
+    {%- if has_aside -%}
+      <div class="ag-head__aside">
+        {%- if text != blank -%}
+          <div class="ag-lead">{{ text }}</div>
+        {%- endif -%}
+        {%- if link_label != blank and link_url != blank -%}
+          <a class="ag-link" href="{{ link_url }}">
+            {{- link_label | escape -}}
+            {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}

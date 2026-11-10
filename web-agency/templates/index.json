@@ -1,0 +1,493 @@
+{
+  "sections": {
+    "hero": {
+      "type": "agency-hero",
+      "settings": {
+        "eyebrow": "Web Development Agency",
+        "heading": "We Build Digital Experiences That Move Businesses <em>Forward.</em>",
+        "heading_size": "medium",
+        "text": "<p>From powerful Shopify stores to custom digital experiences, we design and develop websites that help ambitious brands grow.</p>",
+        "button_label": "Start Your Project",
+        "button_link": "/pages/contact",
+        "button_label_2": "Explore Our Work",
+        "button_link_2": "/pages/portfolio",
+        "show_artwork": true,
+        "meta": "Shopify Development\nCustom Web Design\nPerformance & SEO\nOngoing Support",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 80
+      }
+    },
+    "marquee": {
+      "type": "agency-marquee",
+      "settings": {
+        "items": "Shopify Stores\nE-commerce\nBusiness Websites\nLanding Pages\nRedesign\nSpeed Optimization\nMaintenance",
+        "speed": 45,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "services": {
+      "type": "agency-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "store",
+            "title": "Shopify Store Development",
+            "text": "<p>Custom Shopify stores built on Online Store 2.0, designed around your brand and easy for your team to manage.</p>",
+            "link_label": "Learn more",
+            "link": "/pages/services#shopify-store-development"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "cart",
+            "title": "E-commerce Website Development",
+            "text": "<p>Complete online stores with the catalogue, payments, shipping and integrations your business runs on.</p>",
+            "link_label": "Learn more",
+            "link": "/pages/services#e-commerce-website-development"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "layout",
+            "title": "Business Website Design",
+            "text": "<p>Professional websites that explain what you do, build trust and turn visitors into inquiries.</p>",
+            "link_label": "Learn more",
+            "link": "/pages/services#business-website-design"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "rocket",
+            "title": "Landing Page Development",
+            "text": "<p>Focused, fast pages for campaigns and launches, built around one goal and one call to action.</p>",
+            "link_label": "Learn more",
+            "link": "/pages/services#landing-page-development"
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "icon": "refresh",
+            "title": "Website Redesign",
+            "text": "<p>A sharper design and a modern foundation for an existing website, without losing what already works.</p>",
+            "link_label": "Learn more",
+            "link": "/pages/services#website-redesign"
+          }
+        },
+        "card_6": {
+          "type": "card",
+          "settings": {
+            "icon": "bolt",
+            "title": "Website Speed Optimization",
+            "text": "<p>Technical clean-up that improves loading speed, Core Web Vitals and the browsing experience.</p>",
+            "link_label": "Learn more",
+            "link": "/pages/services#website-speed-optimization"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5",
+        "card_6"
+      ],
+      "settings": {
+        "eyebrow": "Services",
+        "heading": "Everything your brand needs to perform online.",
+        "text": "<p>Strategy, design and development under one roof, from a first landing page to a complete Shopify store.</p>",
+        "heading_layout": "split",
+        "link_label": "View all services",
+        "link_url": "/pages/services",
+        "columns": "3",
+        "marker": "icon",
+        "color_scheme": "scheme-1",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "portfolio": {
+      "type": "agency-portfolio",
+      "blocks": {
+        "project_1": {
+          "type": "project",
+          "settings": {
+            "badge": "Sample layout",
+            "title": "Concept: Skincare Storefront",
+            "industry": "Beauty & Wellness",
+            "description": "<p>A sample layout showing how a product-led Shopify store can be presented. Replace it with one of your own projects.</p>",
+            "services": "Shopify Development, UX Design, Product Pages",
+            "button_label": "",
+            "link": "/pages/portfolio"
+          }
+        },
+        "project_2": {
+          "type": "project",
+          "settings": {
+            "badge": "Sample layout",
+            "title": "Concept: Furniture Catalogue",
+            "industry": "Home & Interiors",
+            "description": "<p>A sample layout for a large catalogue with collections, filtering and editorial content. Replace it with one of your own projects.</p>",
+            "services": "E-commerce, Catalogue Structure, Development",
+            "button_label": "",
+            "link": "/pages/portfolio"
+          }
+        },
+        "project_3": {
+          "type": "project",
+          "settings": {
+            "badge": "Sample layout",
+            "title": "Concept: Mobile Fashion Store",
+            "industry": "Fashion & Apparel",
+            "description": "<p>A sample layout focused on the mobile shopping experience. Replace it with one of your own projects.</p>",
+            "services": "Mobile-first Design, Shopify Theme, Speed Optimization",
+            "button_label": "",
+            "link": "/pages/portfolio"
+          }
+        },
+        "project_4": {
+          "type": "project",
+          "settings": {
+            "badge": "Sample layout",
+            "title": "Concept: Consulting Firm Website",
+            "industry": "Professional Services",
+            "description": "<p>A sample layout for a service business website built to generate inquiries. Replace it with one of your own projects.</p>",
+            "services": "Business Website, Content Strategy, SEO Foundations",
+            "button_label": "",
+            "link": "/pages/portfolio"
+          }
+        }
+      },
+      "block_order": [
+        "project_1",
+        "project_2",
+        "project_3",
+        "project_4"
+      ],
+      "settings": {
+        "eyebrow": "Selected Work",
+        "heading": "Featured projects.",
+        "text": "<p>A look at the kind of work we do across e-commerce, business websites and campaign pages.</p>",
+        "link_label": "",
+        "link_url": "",
+        "source": "metaobject",
+        "metaobject_type": "portfolio_project",
+        "limit": 4,
+        "stagger": true,
+        "button_label": "View Project",
+        "footer_label": "View All Work",
+        "footer_link": "/pages/portfolio",
+        "color_scheme": "scheme-2",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "why": {
+      "type": "agency-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Design and development together",
+            "text": "<p>One team takes your project from concept to launch, so nothing is lost between a design file and the finished website.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Built to be managed by you",
+            "text": "<p>Every page is assembled from editable sections. Update text, images and layouts yourself, without waiting on a developer.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Performance as a standard",
+            "text": "<p>Lightweight code, optimised images and careful use of scripts keep your website fast on every device.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Clear, direct communication",
+            "text": "<p>You always know what is being worked on, what comes next and who to speak to.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
+      "settings": {
+        "eyebrow": "Why choose us",
+        "heading": "A partner invested in the outcome, not just the build.",
+        "text": "",
+        "heading_layout": "split",
+        "link_label": "About the agency",
+        "link_url": "/pages/about",
+        "columns": "2",
+        "marker": "number",
+        "color_scheme": "scheme-1",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "process": {
+      "type": "agency-process",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Discover",
+            "text": "<p>We learn about your business, audience and goals, review what exists today and agree on scope, priorities and timeline.</p>"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Design",
+            "text": "<p>We shape the structure and visual direction, then design key pages for desktop and mobile for your review and feedback.</p>"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Develop",
+            "text": "<p>We build the approved designs with clean, responsive code and set up content so every section is easy to edit.</p>"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Launch & Support",
+            "text": "<p>We test across devices, launch with care, hand over with training and stay available for improvements.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "settings": {
+        "eyebrow": "Process",
+        "heading": "A clear path from idea to launch.",
+        "text": "<p>A structured process keeps your project focused, transparent and on schedule.</p>",
+        "color_scheme": "scheme-2",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "tech": {
+      "type": "agency-tech",
+      "blocks": {
+        "group_1": {
+          "type": "group",
+          "settings": {
+            "title": "Shopify",
+            "items": "Online Store 2.0, Liquid, Theme Customisation, Metafields & Metaobjects, App Integration"
+          }
+        },
+        "group_2": {
+          "type": "group",
+          "settings": {
+            "title": "Front-end",
+            "items": "HTML5, CSS3, JavaScript, Responsive Design, Accessibility"
+          }
+        },
+        "group_3": {
+          "type": "group",
+          "settings": {
+            "title": "Design",
+            "items": "UX Design, UI Design, Design Systems, Prototyping"
+          }
+        },
+        "group_4": {
+          "type": "group",
+          "settings": {
+            "title": "Performance & SEO",
+            "items": "Core Web Vitals, Image Optimisation, Technical SEO, Structured Data, Analytics"
+          }
+        }
+      },
+      "block_order": [
+        "group_1",
+        "group_2",
+        "group_3",
+        "group_4"
+      ],
+      "settings": {
+        "eyebrow": "Technologies & Expertise",
+        "heading": "A modern stack, chosen for each project.",
+        "text": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "testimonials": {
+      "type": "agency-testimonials",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "is_placeholder": true,
+            "quote": "<p>Placeholder testimonial. Replace this text with a genuine quote from one of your clients about working with your agency.</p>",
+            "author": "Client name",
+            "role": "Role, Company"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "is_placeholder": true,
+            "quote": "<p>Placeholder testimonial. Use this space for real feedback about the design and development process.</p>",
+            "author": "Client name",
+            "role": "Role, Company"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "is_placeholder": true,
+            "quote": "<p>Placeholder testimonial. Add a real client's words about the results of their project here.</p>",
+            "author": "Client name",
+            "role": "Role, Company"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3"
+      ],
+      "settings": {
+        "eyebrow": "Testimonials",
+        "heading": "What clients say.",
+        "text": "<p>These cards are demo placeholders. Replace them with genuine client feedback before launch.</p>",
+        "columns": "3",
+        "placeholder_label": "Demo placeholder",
+        "color_scheme": "scheme-2",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "faq": {
+      "type": "agency-faq",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "How long does a website project take?",
+            "answer": "<p>Timelines depend on scope. After an initial conversation we provide a schedule with clear milestones, so you know what to expect before the project starts.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "How much does a website cost?",
+            "answer": "<p>Every project is quoted individually based on its requirements. Share your goals through the inquiry form and we will send a tailored proposal.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Do you work with existing Shopify stores?",
+            "answer": "<p>Yes. We can redesign, extend or optimise an existing store, or migrate your current website to Shopify.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "Will I be able to update the website myself?",
+            "answer": "<p>Yes. We build with editable sections and provide a handover so your team can manage content, images and pages without touching code.</p>"
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "Do you provide support after launch?",
+            "answer": "<p>Yes. We offer ongoing maintenance for updates, fixes and improvements once your website is live.</p>"
+          }
+        },
+        "question_6": {
+          "type": "question",
+          "settings": {
+            "question": "What do you need from us to get started?",
+            "answer": "<p>A short description of your business and goals, any brand assets you already have, and examples of websites you like. We guide you through the rest.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5",
+        "question_6"
+      ],
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Questions, answered.",
+        "text": "<p>Everything you need to know before starting a project.</p>",
+        "link_label": "Ask us something else",
+        "link_url": "/pages/contact",
+        "open_first": true,
+        "enable_schema": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "cta": {
+      "type": "agency-cta",
+      "settings": {
+        "eyebrow": "Start a project",
+        "heading": "Ready to build something <em>exceptional</em>?",
+        "text": "<p>Tell us about your goals and we will come back with a clear plan, timeline and quote.</p>",
+        "button_label": "Start Your Project",
+        "button_link": "/pages/contact",
+        "button_label_2": "",
+        "button_link_2": "",
+        "show_whatsapp": true,
+        "whatsapp_label": "Chat on WhatsApp",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 112
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "services",
+    "portfolio",
+    "why",
+    "process",
+    "tech",
+    "testimonials",
+    "faq",
+    "cta"
+  ]
+}

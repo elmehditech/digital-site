@@ -1,0 +1,54 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "agency-footer": {
+      "type": "agency-footer",
+      "blocks": {
+        "menu_1": {
+          "type": "menu",
+          "settings": {
+            "heading": "Explore",
+            "menu": "main-menu"
+          }
+        },
+        "menu_2": {
+          "type": "menu",
+          "settings": {
+            "heading": "Information",
+            "menu": "footer"
+          }
+        },
+        "contact_3": {
+          "type": "contact",
+          "settings": {
+            "heading": "Contact",
+            "whatsapp_label": "WhatsApp",
+            "link_label": "Project inquiry",
+            "link_url": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "menu_1",
+        "menu_2",
+        "contact_3"
+      ],
+      "settings": {
+        "logo_text": "",
+        "description": "<p>We design and develop websites, Shopify stores and digital experiences that help ambitious brands grow.</p>",
+        "cta_label": "Start Your Project",
+        "cta_link": "/pages/contact",
+        "show_social": true,
+        "show_wordmark": true,
+        "copyright": "All rights reserved.",
+        "show_policies": true,
+        "show_powered_by": false,
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "agency-footer"
+  ]
+}

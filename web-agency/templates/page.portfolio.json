@@ -1,0 +1,142 @@
+{
+  "sections": {
+    "hero": {
+      "type": "agency-page-hero",
+      "settings": {
+        "eyebrow": "Portfolio",
+        "heading": "Work shaped by <em>strategy,</em> design and code.",
+        "text": "<p>A gallery of project types we design and build. The items below are sample layouts that show how your case studies will be presented.</p>",
+        "button_label": "",
+        "button_link": "",
+        "show_page_content": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 72
+      }
+    },
+    "portfolio": {
+      "type": "agency-portfolio",
+      "blocks": {
+        "project_1": {
+          "type": "project",
+          "settings": {
+            "badge": "Sample layout",
+            "title": "Concept: Skincare Storefront",
+            "industry": "Beauty & Wellness",
+            "description": "<p>A sample layout showing how a product-led Shopify store can be presented. Replace it with one of your own projects.</p>",
+            "services": "Shopify Development, UX Design, Product Pages",
+            "button_label": "Start a Similar Project",
+            "link": "/pages/contact"
+          }
+        },
+        "project_2": {
+          "type": "project",
+          "settings": {
+            "badge": "Sample layout",
+            "title": "Concept: Furniture Catalogue",
+            "industry": "Home & Interiors",
+            "description": "<p>A sample layout for a large catalogue with collections, filtering and editorial content. Replace it with one of your own projects.</p>",
+            "services": "E-commerce, Catalogue Structure, Development",
+            "button_label": "Start a Similar Project",
+            "link": "/pages/contact"
+          }
+        },
+        "project_3": {
+          "type": "project",
+          "settings": {
+            "badge": "Sample layout",
+            "title": "Concept: Mobile Fashion Store",
+            "industry": "Fashion & Apparel",
+            "description": "<p>A sample layout focused on the mobile shopping experience. Replace it with one of your own projects.</p>",
+            "services": "Mobile-first Design, Shopify Theme, Speed Optimization",
+            "button_label": "Start a Similar Project",
+            "link": "/pages/contact"
+          }
+        },
+        "project_4": {
+          "type": "project",
+          "settings": {
+            "badge": "Sample layout",
+            "title": "Concept: Consulting Firm Website",
+            "industry": "Professional Services",
+            "description": "<p>A sample layout for a service business website built to generate inquiries. Replace it with one of your own projects.</p>",
+            "services": "Business Website, Content Strategy, SEO Foundations",
+            "button_label": "Start a Similar Project",
+            "link": "/pages/contact"
+          }
+        },
+        "project_5": {
+          "type": "project",
+          "settings": {
+            "badge": "Sample layout",
+            "title": "Concept: Product Launch Page",
+            "industry": "Consumer Technology",
+            "description": "<p>A sample layout for a single-goal campaign landing page. Replace it with one of your own projects.</p>",
+            "services": "Landing Page, Conversion Design, Analytics Setup",
+            "button_label": "Start a Similar Project",
+            "link": "/pages/contact"
+          }
+        },
+        "project_6": {
+          "type": "project",
+          "settings": {
+            "badge": "Sample layout",
+            "title": "Concept: Specialty Food Shop",
+            "industry": "Food & Beverage",
+            "description": "<p>A sample layout for a small catalogue store with subscriptions and bundles. Replace it with one of your own projects.</p>",
+            "services": "Shopify Development, Redesign, Maintenance",
+            "button_label": "Start a Similar Project",
+            "link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "project_1",
+        "project_2",
+        "project_3",
+        "project_4",
+        "project_5",
+        "project_6"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "link_label": "",
+        "link_url": "",
+        "source": "metaobject",
+        "metaobject_type": "portfolio_project",
+        "limit": 24,
+        "stagger": true,
+        "button_label": "View Project",
+        "footer_label": "",
+        "footer_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 112
+      }
+    },
+    "cta": {
+      "type": "agency-cta",
+      "settings": {
+        "eyebrow": "Start a project",
+        "heading": "Have a project in mind? <em>Let's build it.</em>",
+        "text": "<p>Tell us about your goals and we will come back with a clear plan, timeline and quote.</p>",
+        "button_label": "Start Your Project",
+        "button_link": "/pages/contact",
+        "button_label_2": "",
+        "button_link_2": "",
+        "show_whatsapp": true,
+        "whatsapp_label": "Chat on WhatsApp",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 112
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "portfolio",
+    "cta"
+  ]
+}

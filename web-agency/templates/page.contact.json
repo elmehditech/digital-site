@@ -1,0 +1,114 @@
+{
+  "sections": {
+    "hero": {
+      "type": "agency-page-hero",
+      "settings": {
+        "eyebrow": "Contact",
+        "heading": "Let's start your <em>project.</em>",
+        "text": "<p>Share a few details about your business and what you would like to build. We will get back to you with next steps.</p>",
+        "button_label": "",
+        "button_link": "",
+        "show_page_content": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 56
+      }
+    },
+    "form": {
+      "type": "agency-contact",
+      "blocks": {
+        "whatsapp_1": {
+          "type": "whatsapp",
+          "settings": {
+            "heading": "Prefer to chat?",
+            "text": "<p>Message us on WhatsApp for a quick conversation about your project.</p>",
+            "button_label": "Chat on WhatsApp"
+          }
+        },
+        "email_2": {
+          "type": "email",
+          "settings": {
+            "heading": "Email",
+            "text": ""
+          }
+        },
+        "info_3": {
+          "type": "info",
+          "settings": {
+            "heading": "What happens next",
+            "text": "<p>We review your inquiry, reply with any questions, then send a tailored proposal with scope, timeline and quote.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "whatsapp_1",
+        "email_2",
+        "info_3"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 112
+      }
+    },
+    "faq": {
+      "type": "agency-faq",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "How long does a website project take?",
+            "answer": "<p>Timelines depend on scope. After an initial conversation we provide a schedule with clear milestones, so you know what to expect before the project starts.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "How much does a website cost?",
+            "answer": "<p>Every project is quoted individually based on its requirements. Share your goals through the inquiry form and we will send a tailored proposal.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Do you work with existing Shopify stores?",
+            "answer": "<p>Yes. We can redesign, extend or optimise an existing store, or migrate your current website to Shopify.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "Will I be able to update the website myself?",
+            "answer": "<p>Yes. We build with editable sections and provide a handover so your team can manage content, images and pages without touching code.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4"
+      ],
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Before you write.",
+        "text": "",
+        "link_label": "",
+        "link_url": "",
+        "open_first": false,
+        "enable_schema": true,
+        "color_scheme": "scheme-2",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "form",
+    "faq"
+  ]
+}

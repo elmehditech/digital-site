@@ -1,0 +1,153 @@
+{%- liquid
+  assign show_media = false
+  if section.settings.media != 'none'
+    assign show_media = true
+  endif
+-%}
+<section class="ag-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_divider %} ag-section--line{% endif %}" style="--ag-pt: {{ section.settings.padding_top }}px; --ag-pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    <div class="ag-split{% if show_media %}{% if section.settings.media == 'right' %} ag-split--reverse{% endif %}{% else %} ag-split--text{% endif %}">
+      {%- if show_media -%}
+        <div class="ag-split__media ag-reveal">
+          {%- if section.settings.image != blank -%}
+            {{
+              section.settings.image
+              | image_url: width: 1500
+              | image_tag: widths: '375, 550, 750, 1100, 1500', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy'
+            }}
+          {%- else -%}
+            {%- render 'agency-placeholder', variant: section.settings.placeholder -%}
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <div class="ag-split__content ag-reveal">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="ag-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="ag-split__content ag-reveal" style="--ag-i: 1;">
+        {%- if show_media and section.settings.eyebrow != blank -%}
+          <p class="ag-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="ag-h2">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="ag-lead">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+          <a class="ag-btn ag-btn--ghost" href="{{ section.settings.button_link }}">
+            {{- section.settings.button_label | escape -}}
+            {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Agency text & media",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "About"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A studio built around craft and clarity."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Introduce your agency, your mission or your vision here.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "media",
+      "label": "Media",
+      "options": [
+        { "value": "none", "label": "No media (editorial text layout)" },
+        { "value": "left", "label": "Media left" },
+        { "value": "right", "label": "Media right" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "A built-in illustration is shown until you select an image."
+    },
+    {
+      "type": "range",
+      "id": "placeholder",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Illustration style",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show top divider line",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 112
+    }
+  ],
+  "presets": [
+    {
+      "name": "Agency text & media"
+    }
+  ]
+}
+{% endschema %}

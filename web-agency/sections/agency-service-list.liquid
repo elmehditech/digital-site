@@ -1,0 +1,233 @@
+<section class="ag-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_divider %} ag-section--line{% endif %}" style="--ag-pt: {{ section.settings.padding_top }}px; --ag-pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    {%- render 'agency-head',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text
+    -%}
+
+    {%- if section.settings.show_index and section.blocks.size > 1 -%}
+      <nav aria-label="{{ section.settings.index_label | escape }}">
+        <ul class="ag-subnav ag-reveal" role="list">
+          {%- for block in section.blocks -%}
+            <li>
+              <a class="ag-chip" href="#{{ block.settings.title | handleize }}">{{ block.settings.title | escape }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
+    <div class="ag-services">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign benefits = block.settings.benefits | newline_to_br | split: '<br />'
+          assign deliverables = block.settings.deliverables | newline_to_br | split: '<br />'
+          assign quote_url = block.settings.button_link
+          if quote_url != blank and section.settings.pass_service
+            assign service_param = block.settings.title | url_encode
+            if quote_url contains '?'
+              assign quote_url = quote_url | append: '&service=' | append: service_param
+            else
+              assign quote_url = quote_url | append: '?service=' | append: service_param
+            endif
+          endif
+        -%}
+        <article class="ag-service" id="{{ block.settings.title | handleize }}" {{ block.shopify_attributes }}>
+          <div class="ag-service__intro ag-reveal">
+            <span class="ag-service__index" aria-hidden="true">
+              {%- if forloop.index < 10 -%}0{%- endif -%}
+              {{- forloop.index }} / {% if forloop.length < 10 -%}0{%- endif -%}
+              {{- forloop.length -}}
+            </span>
+            <h2 class="ag-h2">{{ block.settings.title | escape }}</h2>
+            {%- if block.settings.description != blank -%}
+              <div class="ag-text">{{ block.settings.description }}</div>
+            {%- endif -%}
+            {%- if block.settings.button_label != blank and quote_url != blank -%}
+              <a class="ag-btn" href="{{ quote_url }}">
+                {{- block.settings.button_label | escape -}}
+                {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+              </a>
+            {%- endif -%}
+          </div>
+
+          <div class="ag-service__cols">
+            {%- if block.settings.benefits != blank -%}
+              <div class="ag-service__col ag-reveal" style="--ag-i: 1;">
+                <h3 class="ag-label">{{ section.settings.benefits_label | escape }}</h3>
+                <ul class="ag-list" role="list">
+                  {%- for item in benefits -%}
+                    {%- assign item_text = item | strip -%}
+                    {%- if item_text != blank -%}
+                      <li>{{ item_text | escape }}</li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+            {%- if block.settings.deliverables != blank -%}
+              <div class="ag-service__col ag-reveal" style="--ag-i: 2;">
+                <h3 class="ag-label">{{ section.settings.deliverables_label | escape }}</h3>
+                <ul class="ag-list ag-list--dash" role="list">
+                  {%- for item in deliverables -%}
+                    {%- assign item_text = item | strip -%}
+                    {%- if item_text != blank -%}
+                      <li>{{ item_text | escape }}</li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Agency service list",
+  "tag": "div",
+  "max_blocks": 16,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_index",
+      "label": "Show quick links to each service",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "index_label",
+      "label": "Quick links accessible label",
+      "default": "Services on this page"
+    },
+    {
+      "type": "text",
+      "id": "benefits_label",
+      "label": "Benefits label",
+      "default": "Benefits"
+    },
+    {
+      "type": "text",
+      "id": "deliverables_label",
+      "label": "Deliverables label",
+      "default": "Deliverables"
+    },
+    {
+      "type": "checkbox",
+      "id": "pass_service",
+      "label": "Preselect the service in the contact form",
+      "default": true,
+      "info": "Adds the service name to the button link so the inquiry form opens with it selected."
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show top divider line",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 112
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Service name",
+          "default": "Service name"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Describe what this service covers and who it is for.</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "benefits",
+          "label": "Benefits",
+          "info": "One per line.",
+          "default": "First benefit\nSecond benefit\nThird benefit"
+        },
+        {
+          "type": "textarea",
+          "id": "deliverables",
+          "label": "Deliverables",
+          "info": "One per line.",
+          "default": "First deliverable\nSecond deliverable\nThird deliverable"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Request a Quote"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Agency service list",
+      "blocks": [
+        { "type": "service" },
+        { "type": "service" }
+      ]
+    }
+  ]
+}
+{% endschema %}

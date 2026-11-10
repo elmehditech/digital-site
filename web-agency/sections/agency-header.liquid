@@ -1,0 +1,229 @@
+{%- liquid
+  assign menu = section.settings.menu
+  assign has_cta = false
+  if section.settings.cta_label != blank and section.settings.cta_link != blank
+    assign has_cta = true
+  endif
+-%}
+<header
+  class="ag-header color-{{ section.settings.color_scheme }}{% if section.settings.enable_sticky %} ag-header--sticky{% endif %}{% if section.settings.show_line %} ag-header--line{% endif %}"
+  data-ag-header
+>
+  <div class="page-width ag-header__inner">
+    <div class="ag-logo-wrap">
+      <a class="ag-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+        {%- if settings.logo != blank -%}
+          {%- liquid
+            assign logo_alt = settings.logo.alt | default: shop.name | escape
+            assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio
+          -%}
+          {{
+            settings.logo
+            | image_url: width: 600
+            | image_tag: width: settings.logo_width, height: logo_height, alt: logo_alt, sizes: '(max-width: 749px) 120px, 200px', widths: '100, 200, 300, 400, 600', loading: 'eager'
+          }}
+        {%- else -%}
+          {%- if section.settings.show_logo_mark -%}
+            <span class="ag-logo__mark" aria-hidden="true"></span>
+          {%- endif -%}
+          <span>{{ section.settings.logo_text | default: shop.name | escape }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    {%- if menu.links.size > 0 -%}
+      <nav class="ag-nav" aria-label="{{ 'sections.header.menu' | t }}">
+        <ul role="list">
+          {%- for link in menu.links -%}
+            <li>
+              <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+                {{- link.title | escape -}}
+              </a>
+              {%- if link.links.size > 0 -%}
+                <ul class="ag-nav__sub" role="list">
+                  {%- for child in link.links -%}
+                    <li>
+                      <a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>
+                        {{- child.title | escape -}}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
+    <div class="ag-header__actions">
+      {%- if section.settings.show_cart -%}
+        <a class="ag-icon-btn" href="{{ routes.cart_url }}" aria-label="{{ 'templates.cart.cart' | t }}">
+          {%- render 'agency-icon', icon: 'cart' -%}
+          {%- if cart.item_count > 0 -%}
+            <span class="ag-cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+      {%- if has_cta -%}
+        <a class="ag-btn ag-btn--sm ag-header__cta" href="{{ section.settings.cta_link }}">
+          {{- section.settings.cta_label | escape -}}
+          {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+        </a>
+      {%- endif -%}
+      <button
+        type="button"
+        class="ag-icon-btn ag-burger"
+        aria-expanded="false"
+        aria-controls="AgencyMobileMenu"
+        aria-label="{{ 'sections.header.menu' | t }}"
+        data-label-open="{{ 'sections.header.menu' | t }}"
+        data-label-close="{{ 'accessibility.close' | t }}"
+        data-ag-menu-toggle
+      >
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="ag-mobile-menu color-{{ section.settings.color_scheme }}" id="AgencyMobileMenu">
+  <nav aria-label="{{ 'sections.header.menu' | t }}">
+    <ul class="ag-mobile-menu__list" role="list">
+      {%- for link in menu.links -%}
+        <li>
+          <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+            {{- link.title | escape -}}
+            <span aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+          </a>
+          {%- if link.links.size > 0 -%}
+            <ul class="ag-mobile-menu__sub" role="list">
+              {%- for child in link.links -%}
+                <li>
+                  <a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>
+                    {{- child.title | escape -}}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+  <div class="ag-mobile-menu__foot">
+    {%- if has_cta -%}
+      <a class="ag-btn ag-btn--block" href="{{ section.settings.cta_link }}">
+        {{- section.settings.cta_label | escape -}}
+        {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+      </a>
+    {%- endif -%}
+    {%- unless request.design_mode -%}
+      {%- render 'agency-whatsapp', label: section.settings.whatsapp_label, class: 'ag-btn--block' -%}
+    {%- endunless -%}
+  </div>
+</div>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_tiktok_link | json }}
+    ],
+    "url": {{ request.origin | append: page.url | json }}
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Agency header",
+  "class": "ag-header-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The logo image and its width are managed in Theme settings > Logo. Without a logo image, the text below (or the store name) is shown."
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "info": "Leave empty to use the store name."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_logo_mark",
+      "label": "Show accent dot next to text logo",
+      "default": true
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Start Your Project"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_label",
+      "label": "WhatsApp button label (mobile menu)",
+      "default": "Chat on WhatsApp",
+      "info": "Shown only when a WhatsApp number is set in Theme settings > Agency."
+    },
+    {
+      "type": "header",
+      "content": "Behaviour"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "Sticky header",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "label": "Always show bottom line",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart icon",
+      "default": false,
+      "info": "Enable if you also sell products or services through Shopify checkout."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  }
+}
+{% endschema %}

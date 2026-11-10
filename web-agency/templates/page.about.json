@@ -1,0 +1,251 @@
+{
+  "sections": {
+    "hero": {
+      "type": "agency-page-hero",
+      "settings": {
+        "eyebrow": "About",
+        "heading": "A web development agency focused on <em>craft</em> and results.",
+        "text": "<p>We help businesses build professional websites, Shopify stores and high-converting digital experiences.</p>",
+        "button_label": "",
+        "button_link": "",
+        "show_page_content": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 72
+      }
+    },
+    "intro": {
+      "type": "agency-split",
+      "settings": {
+        "eyebrow": "Who we are",
+        "heading": "Designers and developers working as one team.",
+        "text": "<p>We are a digital agency specialising in web design and development. We partner with ambitious brands to plan, design and build websites that look exceptional, load quickly and are simple to manage.</p><p>From first conversation to launch and beyond, we stay close to the work and to the people we build it for.</p>",
+        "button_label": "Explore our services",
+        "button_link": "/pages/services",
+        "media": "right",
+        "placeholder": 4,
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 112
+      }
+    },
+    "mission": {
+      "type": "agency-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "target",
+            "title": "Our mission",
+            "text": "<p>To give every business we work with a website that represents it at its best, supports its goals and is a pleasure to use.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "globe",
+            "title": "Our vision",
+            "text": "<p>To be a trusted digital partner for brands around the world, known for thoughtful design, dependable engineering and lasting client relationships.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2"
+      ],
+      "settings": {
+        "eyebrow": "Mission & Vision",
+        "heading": "Why we do this work.",
+        "text": "",
+        "heading_layout": "stack",
+        "link_label": "",
+        "link_url": "",
+        "columns": "2",
+        "marker": "icon",
+        "color_scheme": "scheme-2",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "expertise": {
+      "type": "agency-tech",
+      "blocks": {
+        "group_1": {
+          "type": "group",
+          "settings": {
+            "title": "Shopify & E-commerce",
+            "items": "Shopify Store Development, Online Store 2.0 Themes, Liquid, Metaobjects, Checkout & Payments Setup"
+          }
+        },
+        "group_2": {
+          "type": "group",
+          "settings": {
+            "title": "Web Design",
+            "items": "Business Websites, Landing Pages, Redesigns, UX & UI Design, Responsive Layouts"
+          }
+        },
+        "group_3": {
+          "type": "group",
+          "settings": {
+            "title": "Performance & Care",
+            "items": "Speed Optimization, Technical SEO, Accessibility, Maintenance & Support"
+          }
+        }
+      },
+      "block_order": [
+        "group_1",
+        "group_2",
+        "group_3"
+      ],
+      "settings": {
+        "eyebrow": "Expertise",
+        "heading": "What we know best.",
+        "text": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "values": {
+      "type": "agency-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Quality",
+            "text": "<p>We care about details, from typography and spacing to the code no one sees.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Clarity",
+            "text": "<p>Plain language, honest timelines and no surprises.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Partnership",
+            "text": "<p>We treat your goals as our own and work alongside your team.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Responsibility",
+            "text": "<p>We build accessible, fast and maintainable websites that last.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
+      "settings": {
+        "eyebrow": "Values",
+        "heading": "The principles behind every project.",
+        "text": "",
+        "heading_layout": "split",
+        "link_label": "",
+        "link_url": "",
+        "columns": "4",
+        "marker": "number",
+        "color_scheme": "scheme-2",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "process": {
+      "type": "agency-process",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Discover",
+            "text": "<p>We learn about your business, audience and goals, review what exists today and agree on scope, priorities and timeline.</p>"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Design",
+            "text": "<p>We shape the structure and visual direction, then design key pages for desktop and mobile for your review and feedback.</p>"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Develop",
+            "text": "<p>We build the approved designs with clean, responsive code and set up content so every section is easy to edit.</p>"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Launch & Support",
+            "text": "<p>We test across devices, launch with care, hand over with training and stay available for improvements.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "settings": {
+        "eyebrow": "Working process",
+        "heading": "How a project moves from idea to launch.",
+        "text": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "cta": {
+      "type": "agency-cta",
+      "settings": {
+        "eyebrow": "Start a project",
+        "heading": "Let's create something you are <em>proud</em> of.",
+        "text": "<p>Tell us about your goals and we will come back with a clear plan, timeline and quote.</p>",
+        "button_label": "Start Your Project",
+        "button_link": "/pages/contact",
+        "button_label_2": "",
+        "button_link_2": "",
+        "show_whatsapp": true,
+        "whatsapp_label": "Chat on WhatsApp",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 112
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "intro",
+    "mission",
+    "expertise",
+    "values",
+    "process",
+    "cta"
+  ]
+}

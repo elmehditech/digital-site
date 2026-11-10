@@ -1,0 +1,254 @@
+{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign menu_blocks = section.blocks.size | at_least: 1 | at_most: 4
+-%}
+<footer class="ag-footer color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="ag-footer__top">
+      <div class="ag-footer__brand">
+        <a class="ag-logo" href="{{ routes.root_url }}">
+          <span class="ag-logo__mark" aria-hidden="true"></span>
+          <span>{{ section.settings.logo_text | default: shop.name | escape }}</span>
+        </a>
+        {%- if section.settings.description != blank -%}
+          <div class="ag-text">{{ section.settings.description }}</div>
+        {%- endif -%}
+        {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+          <a class="ag-btn" href="{{ section.settings.cta_link }}">
+            {{- section.settings.cta_label | escape -}}
+            {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.show_social -%}
+          {%- render 'social-icons' -%}
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="ag-footer__cols" style="--ag-cols: {{ menu_blocks }};">
+          {%- for block in section.blocks -%}
+            <div class="ag-footer__col" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h2 class="ag-label">{{ block.settings.heading | escape }}</h2>
+              {%- endif -%}
+              {%- case block.type -%}
+                {%- when 'menu' -%}
+                  {%- if block.settings.menu.links.size > 0 -%}
+                    <ul role="list">
+                      {%- for link in block.settings.menu.links -%}
+                        <li>
+                          <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+                            {{- link.title | escape -}}
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                {%- when 'text' -%}
+                  <div class="ag-text">{{ block.settings.text }}</div>
+                {%- when 'contact' -%}
+                  {%- liquid
+                    assign wa_number = settings.agency_whatsapp_number | remove: '+' | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.' | strip
+                  -%}
+                  <ul role="list">
+                    {%- if settings.agency_contact_email != blank -%}
+                      <li>
+                        <a href="mailto:{{ settings.agency_contact_email | escape }}">
+                          {{- settings.agency_contact_email | escape -}}
+                        </a>
+                      </li>
+                    {%- endif -%}
+                    {%- if wa_number != blank -%}
+                      <li>
+                        <a href="https://wa.me/{{ wa_number | url_encode }}" target="_blank" rel="noopener">
+                          {{- block.settings.whatsapp_label | escape -}}
+                        </a>
+                      </li>
+                    {%- endif -%}
+                    {%- if block.settings.link_label != blank and block.settings.link_url != blank -%}
+                      <li>
+                        <a href="{{ block.settings.link_url }}">{{ block.settings.link_label | escape }}</a>
+                      </li>
+                    {%- endif -%}
+                  </ul>
+              {%- endcase -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="ag-footer__bottom">
+      <p>
+        &copy; {{ 'now' | date: '%Y' }}
+        {{ shop.name | escape }}.
+        {{ section.settings.copyright | escape }}
+        {% if section.settings.show_powered_by %}{{ powered_by_link }}{% endif %}
+      </p>
+      {%- if section.settings.show_policies and shop.policies.size > 0 -%}
+        <ul role="list">
+          {%- for policy in shop.policies -%}
+            <li>
+              <a href="{{ policy.url }}">{{ policy.title | escape }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if section.settings.show_wordmark -%}
+    <p class="ag-footer__wordmark" aria-hidden="true">
+      {{- section.settings.logo_text | default: shop.name | escape -}}
+    </p>
+  {%- endif -%}
+</footer>
+
+{% schema %}
+{
+  "name": "Agency footer",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "info": "Leave empty to use the store name."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>We design and develop websites, Shopify stores and digital experiences that help ambitious brands grow.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Start Your Project"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show social icons",
+      "default": true,
+      "info": "Social links are managed in Theme settings > Social media."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wordmark",
+      "label": "Show large outlined wordmark",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Bottom bar"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright text",
+      "default": "All rights reserved."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policies",
+      "label": "Show policy links",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_powered_by",
+      "label": "Show \"Powered by Shopify\"",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Explore"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Studio"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Working with clients worldwide.</p>"
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "Contact",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Shows the email and WhatsApp number from Theme settings > Agency. Empty values are hidden."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Contact"
+        },
+        {
+          "type": "text",
+          "id": "whatsapp_label",
+          "label": "WhatsApp link label",
+          "default": "WhatsApp"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Extra link label",
+          "default": "Project inquiry"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Extra link"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "groups": ["footer"]
+  }
+}
+{% endschema %}

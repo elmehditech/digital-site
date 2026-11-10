@@ -1,0 +1,61 @@
+{%- liquid
+  assign items = section.settings.items | newline_to_br | split: '<br />'
+-%}
+{%- if section.settings.items != blank -%}
+  <div
+    class="ag-marquee color-{{ section.settings.color_scheme }} gradient"
+    style="--ag-marquee-speed: {{ section.settings.speed }}s;"
+  >
+    <div class="ag-marquee__track">
+      {%- for i in (1..2) -%}
+        <ul class="ag-marquee__group" role="list"{% if i == 2 %} aria-hidden="true"{% endif %}>
+          {%- for n in (1..2) -%}
+            {%- for item in items -%}
+              {%- assign item_text = item | strip -%}
+              {%- if item_text != blank -%}
+                <li{% if n == 2 and i == 1 %} aria-hidden="true"{% endif %}>{{ item_text | escape }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
+        </ul>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Agency marquee",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "items",
+      "label": "Items",
+      "info": "One item per line.",
+      "default": "Shopify Stores\nE-commerce\nBusiness Websites\nLanding Pages\nRedesign\nSpeed Optimization\nMaintenance"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 20,
+      "max": 90,
+      "step": 5,
+      "unit": "s",
+      "label": "Loop duration",
+      "default": 45
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Agency marquee"
+    }
+  ]
+}
+{% endschema %}

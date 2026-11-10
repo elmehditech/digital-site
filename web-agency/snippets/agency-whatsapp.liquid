@@ -1,0 +1,37 @@
+{%- doc -%}
+  Renders a WhatsApp call to action that uses the number from Theme settings > Agency.
+  Nothing is rendered while the number is empty (a hint is shown inside the theme editor only).
+
+  @param {string} [style] - button or float. Defaults to button
+  @param {string} [label] - Button label
+  @param {string} [class] - Additional CSS classes
+
+  @example
+  {% render 'agency-whatsapp', label: 'Chat on WhatsApp' %}
+{%- enddoc -%}
+{%- liquid
+  assign wa_number = settings.agency_whatsapp_number | remove: '+' | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.' | strip
+  assign wa_label = label | default: 'WhatsApp'
+-%}
+{%- if wa_number != blank -%}
+  {%- capture wa_url -%}
+    https://wa.me/{{ wa_number | url_encode }}
+    {%- if settings.agency_whatsapp_message != blank -%}
+      ?text={{ settings.agency_whatsapp_message | url_encode | replace: '+', '%20' }}
+    {%- endif -%}
+  {%- endcapture -%}
+  {%- if style == 'float' -%}
+    <a class="ag-whatsapp-float" href="{{ wa_url | strip }}" target="_blank" rel="noopener" aria-label="{{ wa_label | escape }}">
+      {%- render 'agency-icon', icon: 'whatsapp' -%}
+    </a>
+  {%- else -%}
+    <a class="ag-btn ag-btn--whatsapp {{ class }}" href="{{ wa_url | strip }}" target="_blank" rel="noopener">
+      {%- render 'agency-icon', icon: 'whatsapp' -%}
+      {{- wa_label | escape -}}
+    </a>
+  {%- endif -%}
+{%- elsif request.design_mode and style != 'float' -%}
+  <p class="ag-editor-note">
+    WhatsApp button hidden: add your number in Theme settings &rsaquo; Agency. (Only visible in the theme editor.)
+  </p>
+{%- endif -%}

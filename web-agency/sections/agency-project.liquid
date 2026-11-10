@@ -1,0 +1,132 @@
+{%- liquid
+  assign project_services = metaobject.services.value | join: ',' | split: ','
+  assign project_name = metaobject.name.value | default: page_title
+-%}
+<section class="ag-section ag-hero color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_divider %} ag-section--line{% endif %}" style="--ag-pt: {{ section.settings.padding_top }}px; --ag-pb: {{ section.settings.padding_bottom }}px;">
+  <div class="ag-hero__bg" aria-hidden="true"></div>
+  <div class="page-width">
+    <div class="ag-project__grid">
+      <div class="ag-hero__content">
+        {%- if section.settings.back_label != blank and section.settings.back_link != blank -%}
+          <a class="ag-link ag-reveal" href="{{ section.settings.back_link }}">{{ section.settings.back_label | escape }}</a>
+        {%- endif -%}
+        {%- if metaobject.industry.value != blank -%}
+          <p class="ag-eyebrow ag-reveal">{{ metaobject.industry.value | escape }}</p>
+        {%- endif -%}
+        <h1 class="ag-display ag-display--small ag-reveal" style="--ag-i: 1;">{{ project_name | escape }}</h1>
+        {%- if metaobject.description.value != blank -%}
+          <p class="ag-lead ag-reveal" style="--ag-i: 2;">{{ metaobject.description.value | escape }}</p>
+        {%- endif -%}
+      </div>
+
+      <div class="ag-project__facts ag-reveal" style="--ag-i: 2;">
+        {%- if project_services.size > 0 -%}
+          <div>
+            <h2 class="ag-label">{{ section.settings.services_label | escape }}</h2>
+            <ul class="ag-chips" role="list">
+              {%- for service in project_services -%}
+                {%- assign service_text = service | strip -%}
+                {%- if service_text != blank -%}
+                  <li class="ag-chip">{{ service_text | escape }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+        {%- if metaobject.project_url.value != blank and section.settings.visit_label != blank -%}
+          <a class="ag-btn ag-btn--ghost" href="{{ metaobject.project_url.value }}" target="_blank" rel="noopener">
+            {{- section.settings.visit_label | escape -}}
+            {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="ag-project__media ag-reveal">
+      {%- if metaobject.image.value != blank -%}
+        {{
+          metaobject.image.value
+          | image_url: width: 2400
+          | image_tag: widths: '550, 750, 1100, 1500, 2000, 2400', sizes: '(min-width: 1400px) 1300px, 100vw', loading: 'eager', alt: project_name
+        }}
+      {%- else -%}
+        {%- render 'agency-placeholder', variant: 1 -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Agency project",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Displays a portfolio_project metaobject entry: name, industry, description, services, image and project_url."
+    },
+    {
+      "type": "text",
+      "id": "back_label",
+      "label": "Back link label",
+      "default": "All projects"
+    },
+    {
+      "type": "url",
+      "id": "back_link",
+      "label": "Back link"
+    },
+    {
+      "type": "text",
+      "id": "services_label",
+      "label": "Services label",
+      "default": "Services provided"
+    },
+    {
+      "type": "text",
+      "id": "visit_label",
+      "label": "Live site button label",
+      "default": "Visit Live Site"
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show top divider line",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 112
+    }
+  ],
+  "enabled_on": {
+    "templates": ["metaobject"]
+  }
+}
+{% endschema %}

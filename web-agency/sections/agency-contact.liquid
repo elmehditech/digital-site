@@ -1,0 +1,461 @@
+{%- liquid
+  assign services = section.settings.services | newline_to_br | split: '<br />'
+  assign budgets = section.settings.budgets | newline_to_br | split: '<br />'
+  assign form_id = 'AgencyContact-' | append: section.id
+-%}
+<section class="ag-section color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_divider %} ag-section--line{% endif %}" style="--ag-pt: {{ section.settings.padding_top }}px; --ag-pb: {{ section.settings.padding_bottom }}px;" id="inquiry">
+  <div class="page-width">
+    {%- render 'agency-head',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text
+    -%}
+
+    <div class="ag-contact">
+      <div class="ag-reveal">
+        {%- form 'contact', id: form_id, class: 'ag-form' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="ag-form__status" role="status" tabindex="-1" autofocus>
+              {%- if section.settings.success_message != blank -%}
+                {{- section.settings.success_message | escape -}}
+              {%- else -%}
+                {{- 'templates.contact.form.post_success' | t -}}
+              {%- endif -%}
+            </p>
+          {%- elsif form.errors -%}
+            <div class="ag-form__status ag-form__status--error" role="alert" tabindex="-1" autofocus>
+              <div>
+                <p>{{ 'templates.contact.form.error_heading' | t }}</p>
+                {%- if form.errors contains 'email' -%}
+                  <p>
+                    <a href="#{{ form_id }}-email">
+                      {{- form.errors.translated_fields.email | capitalize }}
+                      {{ form.errors.messages.email -}}
+                    </a>
+                  </p>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+
+          <div class="ag-form__row">
+            <div class="ag-field">
+              <label for="{{ form_id }}-name">{{ section.settings.label_name | escape }}</label>
+              <input
+                type="text"
+                id="{{ form_id }}-name"
+                name="contact[name]"
+                autocomplete="name"
+                required
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+              >
+            </div>
+            <div class="ag-field">
+              <label for="{{ form_id }}-email">{{ section.settings.label_email | escape }}</label>
+              <input
+                type="email"
+                id="{{ form_id }}-email"
+                name="contact[email]"
+                autocomplete="email"
+                autocapitalize="off"
+                spellcheck="false"
+                required
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                {% endif %}
+              >
+            </div>
+          </div>
+
+          <div class="ag-form__row">
+            <div class="ag-field">
+              <label for="{{ form_id }}-business">{{ section.settings.label_business | escape }}</label>
+              <input
+                type="text"
+                id="{{ form_id }}-business"
+                name="contact[Business name]"
+                autocomplete="organization"
+                required
+              >
+            </div>
+            <div class="ag-field">
+              <label for="{{ form_id }}-website">
+                {{ section.settings.label_website | escape }}
+                <span>({{ section.settings.label_optional | escape }})</span>
+              </label>
+              <input
+                type="text"
+                inputmode="url"
+                id="{{ form_id }}-website"
+                name="contact[Website URL]"
+                autocomplete="url"
+                autocapitalize="off"
+                spellcheck="false"
+                placeholder="https://"
+              >
+            </div>
+          </div>
+
+          <div class="ag-form__row">
+            <div class="ag-field">
+              <label for="{{ form_id }}-service">{{ section.settings.label_service | escape }}</label>
+              <select id="{{ form_id }}-service" name="contact[Service required]" required data-ag-prefill="service">
+                <option value="" selected disabled>{{ section.settings.label_select | escape }}</option>
+                {%- for option in services -%}
+                  {%- assign option_text = option | strip -%}
+                  {%- if option_text != blank -%}
+                    <option value="{{ option_text | escape }}">{{ option_text | escape }}</option>
+                  {%- endif -%}
+                {%- endfor -%}
+              </select>
+            </div>
+            <div class="ag-field">
+              <label for="{{ form_id }}-budget">{{ section.settings.label_budget | escape }}</label>
+              <select id="{{ form_id }}-budget" name="contact[Estimated budget]" required>
+                <option value="" selected disabled>{{ section.settings.label_select | escape }}</option>
+                {%- for option in budgets -%}
+                  {%- assign option_text = option | strip -%}
+                  {%- if option_text != blank -%}
+                    <option value="{{ option_text | escape }}">{{ option_text | escape }}</option>
+                  {%- endif -%}
+                {%- endfor -%}
+              </select>
+            </div>
+          </div>
+
+          <div class="ag-field">
+            <label for="{{ form_id }}-body">{{ section.settings.label_description | escape }}</label>
+            <textarea
+              id="{{ form_id }}-body"
+              name="contact[body]"
+              rows="6"
+              required
+              placeholder="{{ section.settings.placeholder_description | escape }}"
+            >
+              {{- form.body -}}
+            </textarea>
+          </div>
+
+          <input type="hidden" name="contact[Package of interest]" value="" data-ag-prefill="package">
+
+          <div class="ag-form__foot">
+            <button type="submit" class="ag-btn">
+              {{- section.settings.button_label | escape -}}
+              {%- render 'agency-icon', icon: 'arrow', class: 'ag-btn__icon' -%}
+            </button>
+            {%- if section.settings.form_note != blank -%}
+              <p class="ag-form__hint">{{ section.settings.form_note | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endform -%}
+      </div>
+
+      <aside class="ag-contact__aside ag-reveal" style="--ag-i: 1;" aria-label="{{ section.settings.aside_label | escape }}">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign show_panel = true
+            unless request.design_mode
+              if block.type == 'whatsapp' and settings.agency_whatsapp_number == blank
+                assign show_panel = false
+              elsif block.type == 'email' and settings.agency_contact_email == blank
+                assign show_panel = false
+              endif
+            endunless
+            unless show_panel
+              continue
+            endunless
+          -%}
+          <div class="ag-contact__panel" {{ block.shopify_attributes }}>
+            {%- case block.type -%}
+              {%- when 'whatsapp' -%}
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="ag-label">{{ block.settings.heading | escape }}</h3>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="ag-text">{{ block.settings.text }}</div>
+                {%- endif -%}
+                {%- render 'agency-whatsapp', label: block.settings.button_label -%}
+              {%- when 'email' -%}
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="ag-label">{{ block.settings.heading | escape }}</h3>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="ag-text">{{ block.settings.text }}</div>
+                {%- endif -%}
+                {%- if settings.agency_contact_email != blank -%}
+                  <a class="ag-link" href="mailto:{{ settings.agency_contact_email | escape }}">
+                    {{- settings.agency_contact_email | escape -}}
+                  </a>
+                {%- elsif request.design_mode -%}
+                  <p class="ag-editor-note">
+                    Email hidden: add it in Theme settings &rsaquo; Agency. (Only visible in the theme editor.)
+                  </p>
+                {%- endif -%}
+              {%- when 'info' -%}
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="ag-label">{{ block.settings.heading | escape }}</h3>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="ag-text">{{ block.settings.text }}</div>
+                {%- endif -%}
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Agency inquiry form",
+  "tag": "div",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Uses Shopify's native contact form. Submissions are emailed to the store's sender email address (Settings > Notifications)."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Project inquiry"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tell us about your project."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Form options"
+    },
+    {
+      "type": "textarea",
+      "id": "services",
+      "label": "Service options",
+      "info": "One per line.",
+      "default": "Shopify Store Development\nE-commerce Website Development\nBusiness Website Design\nLanding Page Development\nWebsite Redesign\nWebsite Speed Optimization\nWebsite Maintenance\nNot sure yet"
+    },
+    {
+      "type": "textarea",
+      "id": "budgets",
+      "label": "Budget options",
+      "info": "One per line. Edit these ranges to match your own pricing and currency.",
+      "default": "Entry-level project\nMid-range project\nLarge project\nNot sure yet"
+    },
+    {
+      "type": "header",
+      "content": "Form labels"
+    },
+    {
+      "type": "text",
+      "id": "label_name",
+      "label": "Full name label",
+      "default": "Full name"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Email label",
+      "default": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "label_business",
+      "label": "Business name label",
+      "default": "Business name"
+    },
+    {
+      "type": "text",
+      "id": "label_website",
+      "label": "Website label",
+      "default": "Website URL"
+    },
+    {
+      "type": "text",
+      "id": "label_optional",
+      "label": "Optional label",
+      "default": "optional"
+    },
+    {
+      "type": "text",
+      "id": "label_service",
+      "label": "Service label",
+      "default": "Service required"
+    },
+    {
+      "type": "text",
+      "id": "label_budget",
+      "label": "Budget label",
+      "default": "Estimated budget"
+    },
+    {
+      "type": "text",
+      "id": "label_select",
+      "label": "Select placeholder",
+      "default": "Select an option"
+    },
+    {
+      "type": "text",
+      "id": "label_description",
+      "label": "Project description label",
+      "default": "Project description"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_description",
+      "label": "Project description placeholder",
+      "default": "Goals, timeline, references and anything else we should know."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Submit button label",
+      "default": "Send Inquiry"
+    },
+    {
+      "type": "text",
+      "id": "form_note",
+      "label": "Note next to the button",
+      "default": "We only use your details to reply to this inquiry."
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you. Your inquiry has been sent and we will be in touch shortly."
+    },
+    {
+      "type": "text",
+      "id": "aside_label",
+      "label": "Side panel accessible label",
+      "default": "Other ways to reach us"
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show top divider line",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 112
+    }
+  ],
+  "blocks": [
+    {
+      "type": "whatsapp",
+      "name": "WhatsApp",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "The button uses the number from Theme settings > Agency and stays hidden until a number is added."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Prefer to chat?"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Message us on WhatsApp for a quick conversation about your project.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Chat on WhatsApp"
+        }
+      ]
+    },
+    {
+      "type": "email",
+      "name": "Email",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Shows the contact email from Theme settings > Agency."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Email"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "info",
+      "name": "Information",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "What happens next"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>We review your inquiry, reply with any questions, then send a tailored proposal.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Agency inquiry form",
+      "blocks": [
+        { "type": "whatsapp" },
+        { "type": "info" }
+      ]
+    }
+  ]
+}
+{% endschema %}

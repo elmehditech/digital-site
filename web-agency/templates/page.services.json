@@ -1,0 +1,192 @@
+{
+  "sections": {
+    "hero": {
+      "type": "agency-page-hero",
+      "settings": {
+        "eyebrow": "Services",
+        "heading": "Websites and Shopify stores, designed and built to <em>perform.</em>",
+        "text": "<p>Seven focused services covering every stage of your online presence, from a first landing page to a complete e-commerce store and its ongoing care.</p>",
+        "button_label": "Request a Quote",
+        "button_link": "/pages/contact",
+        "show_page_content": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 72
+      }
+    },
+    "services": {
+      "type": "agency-service-list",
+      "blocks": {
+        "service_1": {
+          "type": "service",
+          "settings": {
+            "title": "Shopify Store Development",
+            "description": "<p>Custom Shopify stores built on Online Store 2.0, designed around your brand and structured so your team can manage every page without a developer.</p>",
+            "benefits": "A storefront tailored to your brand, not a generic template\nSections and content your team can edit in the theme editor\nA buying journey designed to reduce friction from product page to checkout\nClean, maintainable Liquid code that is ready to grow with you",
+            "deliverables": "Custom or customised Shopify theme\nHomepage, collection, product and content templates\nNavigation, search and cart experience\nApp selection and configuration\nLaunch checklist and handover training",
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact"
+          }
+        },
+        "service_2": {
+          "type": "service",
+          "settings": {
+            "title": "E-commerce Website Development",
+            "description": "<p>End-to-end e-commerce builds for brands that need more than a storefront: catalogue structure, payments, shipping, and the integrations that keep operations running.</p>",
+            "benefits": "A catalogue structure that scales as your range grows\nPayment, shipping and tax settings configured for your markets\nIntegrations that connect your store to the tools you already use\nA store built for mobile shoppers first",
+            "deliverables": "E-commerce architecture and sitemap\nProduct, collection and checkout setup\nPayment and shipping configuration\nThird-party integrations\nPre-launch testing across devices",
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact"
+          }
+        },
+        "service_3": {
+          "type": "service",
+          "settings": {
+            "title": "Business Website Design",
+            "description": "<p>Professional websites for service businesses and companies that need to explain what they do, build trust and turn visitors into inquiries.</p>",
+            "benefits": "A clear presentation of who you are and what you offer\nDesign that reflects the quality of your business\nPages structured to guide visitors toward contacting you\nContent you can update yourself",
+            "deliverables": "Visual design for all key pages\nResponsive development\nContact and inquiry forms\nOn-page SEO foundations\nContent management setup",
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact"
+          }
+        },
+        "service_4": {
+          "type": "service",
+          "settings": {
+            "title": "Landing Page Development",
+            "description": "<p>Focused, fast landing pages for campaigns, product launches and lead generation, built around a single goal and a single call to action.</p>",
+            "benefits": "One clear message and one clear action per page\nLayouts designed for paid, email and social traffic\nFast loading on mobile connections\nReusable sections for future campaigns",
+            "deliverables": "Page structure and copy guidance\nCustom design and development\nForm or checkout integration\nAnalytics and conversion tracking setup\nReusable campaign template",
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact"
+          }
+        },
+        "service_5": {
+          "type": "service",
+          "settings": {
+            "title": "Website Redesign",
+            "description": "<p>A considered rebuild of an existing website: sharper design, clearer structure and a modern technical foundation, without losing what already works.</p>",
+            "benefits": "A modern look that matches where your brand is today\nSimpler navigation and clearer content hierarchy\nExisting content and search visibility carefully preserved\nA foundation that is easier to maintain",
+            "deliverables": "Audit of the current website\nNew design direction and page designs\nContent migration\nURL redirects and SEO preservation plan\nLaunch and post-launch review",
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact"
+          }
+        },
+        "service_6": {
+          "type": "service",
+          "settings": {
+            "title": "Website Speed Optimization",
+            "description": "<p>A technical review and clean-up of your website to improve loading speed, Core Web Vitals and the overall browsing experience.</p>",
+            "benefits": "Faster pages for visitors on every device\nBetter Core Web Vitals foundations\nLess unused code, fewer heavy scripts\nA clear report of what was changed and why",
+            "deliverables": "Performance audit\nImage, font and script optimisation\nTheme and app clean-up\nBefore and after measurements\nRecommendations for ongoing performance",
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact"
+          }
+        },
+        "service_7": {
+          "type": "service",
+          "settings": {
+            "title": "Website Maintenance",
+            "description": "<p>Ongoing care for your website: updates, fixes, content changes and small improvements, handled by the people who know your site.</p>",
+            "benefits": "A reliable team to call when something needs attention\nUpdates and fixes handled before they become problems\nContinuous small improvements instead of big rebuilds\nPredictable support arrangements",
+            "deliverables": "Scheduled updates and checks\nBug fixes and troubleshooting\nContent and layout updates\nMonitoring of key pages and forms\nRegular summary of work completed",
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "service_1",
+        "service_2",
+        "service_3",
+        "service_4",
+        "service_5",
+        "service_6",
+        "service_7"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "show_index": true,
+        "index_label": "Services on this page",
+        "benefits_label": "Benefits",
+        "deliverables_label": "Deliverables",
+        "pass_service": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 112
+      }
+    },
+    "process": {
+      "type": "agency-process",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Discover",
+            "text": "<p>We learn about your business, audience and goals, review what exists today and agree on scope, priorities and timeline.</p>"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Design",
+            "text": "<p>We shape the structure and visual direction, then design key pages for desktop and mobile for your review and feedback.</p>"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Develop",
+            "text": "<p>We build the approved designs with clean, responsive code and set up content so every section is easy to edit.</p>"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Launch & Support",
+            "text": "<p>We test across devices, launch with care, hand over with training and stay available for improvements.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "settings": {
+        "eyebrow": "How we work",
+        "heading": "The same clear process for every service.",
+        "text": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "cta": {
+      "type": "agency-cta",
+      "settings": {
+        "eyebrow": "Start a project",
+        "heading": "Not sure which service you need? <em>Let's talk.</em>",
+        "text": "<p>Tell us about your goals and we will come back with a clear plan, timeline and quote.</p>",
+        "button_label": "Start Your Project",
+        "button_link": "/pages/contact",
+        "button_label_2": "",
+        "button_link_2": "",
+        "show_whatsapp": true,
+        "whatsapp_label": "Chat on WhatsApp",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 112
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "services",
+    "process",
+    "cta"
+  ]
+}

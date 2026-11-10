@@ -1,0 +1,209 @@
+{
+  "sections": {
+    "hero": {
+      "type": "agency-page-hero",
+      "settings": {
+        "eyebrow": "Pricing",
+        "heading": "Packages shaped around your <em>goals.</em>",
+        "text": "<p>Three starting points for three stages of growth. Each package is scoped and quoted individually, so you only pay for what your project needs.</p>",
+        "button_label": "",
+        "button_link": "",
+        "show_page_content": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 72
+      }
+    },
+    "pricing": {
+      "type": "agency-pricing",
+      "blocks": {
+        "plan_1": {
+          "type": "plan",
+          "settings": {
+            "name": "Starter",
+            "tagline": "For small businesses needing a professional online presence.",
+            "price": "Request a Quote",
+            "price_note": "Tailored to your scope",
+            "features": "Professionally designed website with core pages\nResponsive design for mobile, tablet and desktop\nContact or inquiry form\nOn-page SEO foundations\nContent management setup and handover",
+            "featured": false,
+            "badge": "Most popular",
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact"
+          }
+        },
+        "plan_2": {
+          "type": "plan",
+          "settings": {
+            "name": "Growth",
+            "tagline": "For businesses needing a stronger digital presence.",
+            "price": "Request a Quote",
+            "price_note": "Tailored to your scope",
+            "features": "Everything in Starter\nCustom design tailored to your brand\nAdditional pages and reusable content sections\nBlog or portfolio setup\nPerformance optimisation\nAnalytics setup",
+            "featured": true,
+            "badge": "Most popular",
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact"
+          }
+        },
+        "plan_3": {
+          "type": "plan",
+          "settings": {
+            "name": "Premium E-commerce",
+            "tagline": "For businesses wanting a complete Shopify store.",
+            "price": "Request a Quote",
+            "price_note": "Tailored to your scope",
+            "features": "Complete Shopify store design and development\nProduct, collection and cart experience\nPayment and shipping configuration\nApp selection and integration\nSpeed and SEO optimisation\nTraining and post-launch support",
+            "featured": false,
+            "badge": "Most popular",
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "plan_1",
+        "plan_2",
+        "plan_3"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "heading_layout": "split",
+        "note": "<p>Every project is scoped individually. Tell us about yours and we will send a tailored quote.</p>",
+        "pass_package": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 112
+      }
+    },
+    "included": {
+      "type": "agency-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "layout",
+            "title": "Responsive by design",
+            "text": "<p>Every page is designed and tested for phones, tablets and desktops.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "pen",
+            "title": "Editable content",
+            "text": "<p>Sections and settings that let your team update the website without code.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "chat",
+            "title": "Direct communication",
+            "text": "<p>A clear point of contact from the first call to the final handover.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ],
+      "settings": {
+        "eyebrow": "Always included",
+        "heading": "The standard behind every package.",
+        "text": "",
+        "heading_layout": "split",
+        "link_label": "",
+        "link_url": "",
+        "columns": "3",
+        "marker": "icon",
+        "color_scheme": "scheme-2",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "faq": {
+      "type": "agency-faq",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "Why are there no fixed prices?",
+            "answer": "<p>Requirements vary a great deal between projects. Quoting individually means the price reflects exactly what you need.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "How do I get a quote?",
+            "answer": "<p>Choose the package closest to your needs and send the inquiry form. We will reply with questions if needed, then a detailed proposal.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Can a package be customised?",
+            "answer": "<p>Yes. Packages are starting points. Features can be added or removed to match your scope and budget.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "Which package is right for me?",
+            "answer": "<p>If you are unsure, tell us about your business and goals. We will recommend the option that fits best.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4"
+      ],
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Pricing questions.",
+        "text": "",
+        "link_label": "",
+        "link_url": "",
+        "open_first": true,
+        "enable_schema": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "cta": {
+      "type": "agency-cta",
+      "settings": {
+        "eyebrow": "Start a project",
+        "heading": "Tell us what you need. We will <em>quote</em> it.",
+        "text": "<p>Tell us about your goals and we will come back with a clear plan, timeline and quote.</p>",
+        "button_label": "Start Your Project",
+        "button_link": "/pages/contact",
+        "button_label_2": "",
+        "button_link_2": "",
+        "show_whatsapp": true,
+        "whatsapp_label": "Chat on WhatsApp",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 112
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "pricing",
+    "included",
+    "faq",
+    "cta"
+  ]
+}
